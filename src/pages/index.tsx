@@ -1,6 +1,7 @@
 import { type NextPage } from "next";
 import Head from "next/head";
 import Link from "next/link";
+import { LoginButton } from "~/components";
 
 const Home: NextPage = () => {
   return (
@@ -39,6 +40,7 @@ const Home: NextPage = () => {
               </div>
             </Link>
           </div>
+          <LoginButton />
         </div>
       </main>
     </>
