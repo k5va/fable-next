@@ -1,16 +1,9 @@
-// This is your Prisma schema file,
-// learn more about it in the docs: https://pris.ly/d/prisma-schema
-
 generator client {
     provider = "prisma-client-js"
 }
 
 datasource db {
     provider = "postgresql"
-    // NOTE: When using postgresql, mysql or sqlserver, uncomment the @db.Text annotations in model Account below
-    // Further reading:
-    // https://next-auth.js.org/adapters/prisma#create-the-prisma-schema
-    // https://www.prisma.io/docs/reference/api-reference/prisma-schema-reference#string
     url      = env("DATABASE_URL")
 }
 
@@ -20,7 +13,7 @@ model Example {
     updatedAt DateTime @updatedAt
 }
 
-// Necessary for Next auth
+// Next auth model
 model Account {
     id                String  @id @default(cuid())
     userId            String
@@ -63,4 +56,53 @@ model VerificationToken {
     expires    DateTime
 
     @@unique([identifier, token])
+}
+
+// Fable data model
+model Category {
+    id              String   @id @default(cuid())
+    name            String   @unique
+    createdAt       DateTime @default(now())
+    updatedAt       DateTime @updatedAt
+    products        Product[]
+}
+
+model Collection {
+    id              String   @id @default(cuid())
+    name            String   @unique
+    createdAt       DateTime @default(now())
+    updatedAt       DateTime @updatedAt
+    products        Product[]
+}
+
+model Product {
+    id              String   @id @default(cuid())
+    name            String   @unique
+    article         String
+    price           Int
+    image           ProductImage @relation(fields: [imageId], references: [id])
+    imageId         String @unique
+    images          ProductGalleryImage[]
+    details         String
+    collection      Collection @relation(fields: [collectionId], references: [id])
+    collectionId    String
+    category        Category @relation(fields: [categoryId], references: [id])
+    categoryId      String
+    registerDate    DateTime
+    createdAt       DateTime @default(now())
+    updatedAt       DateTime @updatedAt
+}
+
+model ProductImage {
+    id              String   @id @default(cuid())
+    source          String
+    product         Product? 
+    productId       String
+}
+
+model ProductGalleryImage {
+    id              String   @id @default(cuid())
+    source          String
+    product         Product @relation(fields: [productId], references: [id])
+    productId       String
 }

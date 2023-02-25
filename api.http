@@ -1,0 +1,29 @@
+# Get all products
+GET http://localhost:3000/api/product HTTP/1.1
+
+###
+
+# Get some product
+GET http://localhost:3000/api/product/1 HTTP/1.1
+
+###
+
+# Get all categories
+GET http://localhost:3000/api/category HTTP/1.1
+
+###
+
+# Get some category
+GET http://localhost:3000/api/category/1 HTTP/1.1
+
+###
+
+# Get all collections
+GET http://localhost:3000/api/collection HTTP/1.1
+
+###
+
+# Get some collection
+GET http://localhost:3000/api/collection/1 HTTP/1.1
+
+###
