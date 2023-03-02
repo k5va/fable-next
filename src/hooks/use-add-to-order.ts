@@ -1,11 +1,7 @@
-// import { addProductOrder } from '../store';
+import { useOrders } from "~/store";
 import { ProductOrder } from "../types";
-// import { useAppDispatch } from "./use-app-dispatch";
 
 export const useAddToOrder = () => {
-  // const dispatch = useAppDispatch();
-
-  return (productOrder: ProductOrder) =>
-    // dispatch(addProductOrder(productOrder));
-    console.log("adding product order", productOrder);
+  const addOrder = useOrders((state) => state.addOrder);
+  return (productOrder: ProductOrder) => addOrder(productOrder);
 };

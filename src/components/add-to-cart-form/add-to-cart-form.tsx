@@ -3,7 +3,6 @@ import { ColorPicker, SizePicker } from "../../components";
 import { AddToCartFormProps } from "./types";
 import { useTranslation } from "react-i18next";
 import { useAddToOrder } from "../../hooks";
-// import { useSelector } from "react-redux";
 import { ProductColor, ProductSize } from "../../types";
 // import { getProductOrderById } from "../../store";
 import {
@@ -12,18 +11,21 @@ import {
   DEFAULT_PRODUCT_SIZE,
 } from "./add-to-cart-form.const";
 // import { useNavigate } from "react-router-dom";
-import { AppRoute } from "../../const";
+// import { AppRoute } from "../../const";
 import classNames from "classnames";
+import { useOrders } from "~/store";
 
 export function AddToCartForm({ product }: AddToCartFormProps) {
-  const { name, price } = product;
+  const { id: productId, name, price } = product;
   const { t } = useTranslation();
   // const navigate = useNavigate();
   const addProductToOrder = useAddToOrder();
-  const isAddedToCart = false;
-  // const isAddedToCart = Boolean(
-  //   useSelector((state) => getProductOrderById(state, product.id))
-  // );
+  // TODO: useCallback?
+  const isAddedToCart = Boolean(
+    useOrders((state) =>
+      state.orders.find(({ product }) => product.id === productId)
+    )
+  );
   const [size, setSize] = useState<ProductSize>(DEFAULT_PRODUCT_SIZE);
   const [color, setColor] = useState<ProductColor>(DEFAULT_PRODUCT_COLOR);
 

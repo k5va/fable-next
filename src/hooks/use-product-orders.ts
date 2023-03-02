@@ -1,20 +1,18 @@
-import { useSelector } from 'react-redux';
-import { useAppDispatch } from './use-app-dispatch';
-import {
-  getOrders,
-  decrementProductCount,
-  incrementProductCount,
-  removeProductOrder,
-} from '../store';
+import { useOrders } from "~/store";
 
 export const useProductOrders = () => {
-  const dispatch = useAppDispatch();
-  const orders = useSelector(getOrders);
+  const [orders, removeOrder, incrementProductCount, decrementProductCount] =
+    useOrders((state) => [
+      state.orders,
+      state.removeOrder,
+      state.incrementProductCount,
+      state.decrementProductCount,
+    ]);
 
   return {
     orders,
-    removeProduct: (id: string) => dispatch(removeProductOrder(id)),
-    incrementProduct: (id: string) => dispatch(incrementProductCount(id)),
-    decrementProduct: (id: string) => dispatch(decrementProductCount(id)),
+    removeProduct: (id: string) => removeOrder(id),
+    incrementProduct: (id: string) => incrementProductCount(id),
+    decrementProduct: (id: string) => decrementProductCount(id),
   };
 };

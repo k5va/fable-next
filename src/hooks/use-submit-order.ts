@@ -1,9 +1,8 @@
-import { useSelector } from 'react-redux';
-import { OrderFormFields } from '../components/order-form/types';
-import { getOrders } from '../store';
+import { useOrders } from "~/store";
+import { OrderFormFields } from "../components/order-form/types";
 
 export const useSubmitOrder = () => {
-  const orders = useSelector(getOrders);
+  const orders = useOrders((state) => state.orders);
 
   return (formData: OrderFormFields) => {
     const fullOrder = {
