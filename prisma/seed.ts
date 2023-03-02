@@ -1,4 +1,4 @@
-import { getRandomNumber } from "~/utils";
+import { getRandomNumber } from "~/utils/get-random-number";
 import { prisma } from "../src/server/db";
 
 const CATEGORIES_COUNT = 5;

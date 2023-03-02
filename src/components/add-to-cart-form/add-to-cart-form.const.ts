@@ -1,0 +1,5 @@
+import { PRODUCT_COLORS, PRODUCT_SIZES } from '../../const';
+
+export const DEFAULT_PRODUCT_ORDER_COUNT = 1;
+export const DEFAULT_PRODUCT_SIZE = PRODUCT_SIZES[0];
+export const DEFAULT_PRODUCT_COLOR = PRODUCT_COLORS[0];
