@@ -6,6 +6,7 @@ export default async function handler(_: NextApiRequest, res: NextApiResponse) {
   const products = await prisma.product.findMany({
     include: {
       images: true,
+      image: true,
     },
   });
 
