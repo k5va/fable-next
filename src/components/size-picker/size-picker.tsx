@@ -1,7 +1,7 @@
 import React, { Fragment } from "react";
 import { PRODUCT_SIZES } from "../../const";
 import { SizePickerProps } from "./types";
-import { useTranslation } from "react-i18next";
+import { useTranslation } from "next-i18next";
 import classNames from "classnames";
 
 export function SizePicker({

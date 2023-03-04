@@ -4,7 +4,7 @@ import { Checkbox, RadioButton, TextArea, TextField } from "../../components";
 import { OrderFormFields } from "./types";
 import { useSubmitOrder } from "../../hooks";
 import { useOrderFormError } from "./hooks/use-order-form-error";
-import { useTranslation } from "react-i18next";
+import { useTranslation } from "next-i18next";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { orderFormSchema } from "./order-form.schema";
 

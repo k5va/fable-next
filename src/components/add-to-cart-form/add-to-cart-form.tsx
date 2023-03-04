@@ -1,7 +1,7 @@
 import React, { FormEventHandler, MouseEventHandler, useState } from "react";
 import { ColorPicker, SizePicker } from "../../components";
 import { AddToCartFormProps } from "./types";
-import { useTranslation } from "react-i18next";
+import { useTranslation } from "next-i18next";
 import { useAddToOrder } from "../../hooks";
 import { ProductColor, ProductSize } from "../../types";
 // import { getProductOrderById } from "../../store";

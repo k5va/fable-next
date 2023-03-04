@@ -1,5 +1,5 @@
 import React from "react";
-import { useTranslation } from "react-i18next";
+import { useTranslation } from "next-i18next";
 import LogoSVG from "./logo.svg";
 import { AppRoute } from "../../const";
 import Link from "next/link";

@@ -1,7 +1,7 @@
 import React, { Fragment } from "react";
 import { PRODUCT_COLORS } from "../../const";
 import { ColorPickerProps } from "./types";
-import { useTranslation } from "react-i18next";
+import { useTranslation } from "next-i18next";
 
 export function ColorPicker({
   selected,

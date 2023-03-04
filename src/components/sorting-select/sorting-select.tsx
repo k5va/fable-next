@@ -1,5 +1,5 @@
 import React, { type ChangeEvent } from "react";
-import { useTranslation } from "react-i18next";
+import { useTranslation } from "next-i18next";
 import { useSorting } from "~/store";
 import { ProductSortingType } from "~/types";
 import { productSortingList } from "../../const";

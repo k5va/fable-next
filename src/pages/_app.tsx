@@ -3,6 +3,7 @@ import { type Session } from "next-auth";
 import { SessionProvider } from "next-auth/react";
 import { QueryClientProvider } from "react-query";
 import { queryClient } from "~/api";
+import { appWithTranslation } from "next-i18next";
 import "~/styles/globals.css";
 
 const MyApp: AppType<{ session: Session | null }> = ({
@@ -18,4 +19,4 @@ const MyApp: AppType<{ session: Session | null }> = ({
   );
 };
 
-export default MyApp;
+export default appWithTranslation(MyApp);

@@ -1,5 +1,5 @@
 import React from "react";
-import { useTranslation } from "react-i18next";
+import { useTranslation } from "next-i18next";
 import { ProductOrderProps } from "./types";
 import { useLoadCollectionById, useProductOrders } from "../../hooks";
 import Link from "next/link";
@@ -9,7 +9,7 @@ export function ProductOrder({ order }: ProductOrderProps): JSX.Element {
   const { removeProduct, incrementProduct, decrementProduct } =
     useProductOrders();
   const { product, size, color, count } = order;
-  const { data: collection } = useLoadCollectionById(product.collection);
+  const { data: collection } = useLoadCollectionById(product.collectionId);
   const { t } = useTranslation();
 
   return (

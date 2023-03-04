@@ -1,6 +1,6 @@
 import classNames from "classnames";
 import React from "react";
-import { useTranslation } from "react-i18next";
+import { useTranslation } from "next-i18next";
 
 export function ProductInfo(): JSX.Element {
   const { t } = useTranslation();
