@@ -1,4 +1,4 @@
-export const BACKEND_URL = "http://localhost:3123";
+export const BACKEND_URL = process.env.NEXT_PUBLIC_BACKEND_URL;
 export const QUERY_STALE_TIME = 1000 * 5;
 
 export const ApiRoute = {
