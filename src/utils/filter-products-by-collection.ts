@@ -1,6 +1,9 @@
-import { Collection, Product } from '../types';
+import { Collection, Product } from "../types";
 
-export function filterProductsByCollection({ id }: Collection, products: Product[]): Product[] {
-  console.log('filterProductsByCollection called');
-  return products.filter(({ collection }) => collection === id);
+export function filterProductsByCollection(
+  { id }: Collection,
+  products: Product[]
+): Product[] {
+  console.log("filterProductsByCollection called");
+  return products.filter(({ collectionId }) => collectionId === id);
 }

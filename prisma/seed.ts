@@ -45,7 +45,7 @@ async function main() {
       },
       create: {
         id: dataId,
-        source: "/img/item_big.png",
+        src: "/img/item_big.png",
         productId: dataId,
       },
       update: {},
@@ -68,7 +68,7 @@ async function main() {
         images: {
           createMany: {
             data: Array.from(Array(PRODUCT_GALLERY_COUNT).keys(), () => ({
-              source: "/img/item_big.png",
+              src: "/img/item_big.png",
             })),
           },
         },
