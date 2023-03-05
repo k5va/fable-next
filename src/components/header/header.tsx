@@ -1,12 +1,12 @@
 import React from "react";
-import { MainNavigation } from "../../components";
+import { Container, MainNavigation } from "../../components";
 
 export function Header(): JSX.Element {
   return (
     <header>
-      <div className="container">
+      <Container>
         <MainNavigation />
-      </div>
+      </Container>
     </header>
   );
 }
