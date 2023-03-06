@@ -1,9 +1,34 @@
-import classNames from "classnames";
-import React, { type ForwardedRef, forwardRef, useId } from "react";
-import { type TextFieldProps } from "./types";
+import { cva, VariantProps } from "class-variance-authority";
+import React, {
+  type ForwardedRef,
+  forwardRef,
+  useId,
+  InputHTMLAttributes,
+} from "react";
+
+const textFieldStyles = cva(
+  "focus:shadow-outline w-full border border-solid bg-white py-3 px-4 text-xl text-black outline-none",
+  {
+    variants: {
+      intent: {
+        primary: "border-black shadow-black",
+        error: "border-red-500 shadow-red-500",
+      },
+    },
+    defaultVariants: {
+      intent: "primary",
+    },
+  }
+);
+
+type TextFieldProps = InputHTMLAttributes<HTMLInputElement> &
+  VariantProps<typeof textFieldStyles> & {
+    label?: string;
+    error?: string;
+  };
 
 export const TextField = forwardRef(function TextField(
-  { label, type = "text", error, ...inputProps }: TextFieldProps,
+  { label, intent, error, ...inputProps }: TextFieldProps,
   ref: ForwardedRef<HTMLInputElement>
 ) {
   const inputId = useId();
@@ -18,18 +43,11 @@ export const TextField = forwardRef(function TextField(
       )}
       <input
         id={inputId}
-        className={classNames(
-          "focus:shadow-outline w-full border border-solid border-black bg-white py-3 px-4 text-xl text-black outline-none",
-          { "focus:shadow-outline border-red-500 shadow-red-500": error }
-        )}
-        // className={`focus:shadow-outline w-full border border-solid border-black bg-white py-3 px-4 text-xl text-black outline-none ${
-        //   error && "focus:shadow-outline border-red-500 shadow-red-500"
-        // }`}
-        type={type}
+        className={textFieldStyles({ intent })}
         ref={ref}
         aria-label={label || inputProps.name}
         aria-errormessage={errorId}
-        aria-invalid={Boolean(error)}
+        aria-invalid={intent === "error"}
         {...inputProps}
       />
       {error && (

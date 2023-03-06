@@ -1,8 +1,34 @@
-import React, { type ForwardedRef, forwardRef, useId } from "react";
-import { type TextAreaProps } from "./types";
+import { cva, VariantProps } from "class-variance-authority";
+import React, {
+  type ForwardedRef,
+  forwardRef,
+  useId,
+  TextareaHTMLAttributes,
+} from "react";
+
+const textAreaStyles = cva(
+  "focus:shadow-outline w-full border border-solid bg-white py-3 px-4 text-xl text-black outline-none",
+  {
+    variants: {
+      intent: {
+        primary: "border-black shadow-black",
+        error: "border-red-500 shadow-red-500",
+      },
+    },
+    defaultVariants: {
+      intent: "primary",
+    },
+  }
+);
+
+type TextAreaProps = TextareaHTMLAttributes<HTMLTextAreaElement> &
+  VariantProps<typeof textAreaStyles> & {
+    label?: string;
+    error?: string;
+  };
 
 export const TextArea = forwardRef(function TextArea(
-  { label, error, ...inputProps }: TextAreaProps,
+  { label, error, intent, ...inputProps }: TextAreaProps,
   ref: ForwardedRef<HTMLTextAreaElement>
 ) {
   const inputId = useId();
@@ -17,12 +43,10 @@ export const TextArea = forwardRef(function TextArea(
       )}
       <textarea
         id={inputId}
-        className={`focus:shadow-outline w-full border border-solid border-black bg-white py-3 px-4 text-xl text-black shadow-black outline-none ${
-          error && "border-red-500 focus:shadow-red-500"
-        }`}
+        className={textAreaStyles({ intent })}
         aria-label={label || inputProps.name}
         aria-errormessage={errorId}
-        aria-invalid={Boolean(error)}
+        aria-invalid={intent === "error"}
         ref={ref}
         {...inputProps}
       ></textarea>

@@ -1,6 +1,14 @@
-import React, { ForwardedRef, forwardRef, useId } from "react";
-import { RadioButtonProps } from "./types";
+import React, {
+  ForwardedRef,
+  forwardRef,
+  InputHTMLAttributes,
+  useId,
+} from "react";
 import classNames from "classnames";
+
+type RadioButtonProps = Omit<InputHTMLAttributes<HTMLInputElement>, "type"> & {
+  label: string;
+};
 
 export const RadioButton = forwardRef(function RadioButton(
   { label, ...inputProps }: RadioButtonProps,
@@ -12,9 +20,9 @@ export const RadioButton = forwardRef(function RadioButton(
     <div className="relative w-full">
       <input
         id={id}
-        className="peer absolute appearance-none "
-        type="radio"
+        className="peer absolute appearance-none"
         ref={ref}
+        type="radio"
         {...inputProps}
       />
       <label
