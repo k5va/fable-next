@@ -1,6 +1,6 @@
 import React from "react";
 import { useTranslation } from "next-i18next";
-import { TextField } from "../../components";
+import { Button, TextField } from "~/components";
 
 export function Subscribe(): JSX.Element {
   const { t } = useTranslation();
@@ -14,9 +14,7 @@ export function Subscribe(): JSX.Element {
           name="email"
           placeholder={t("footer.subscribe.emailPlaceholder") || ""}
         />
-        <button className="" type="submit">
-          {t("footer.subscribe.subscribe")}
-        </button>
+        <Button type="submit">{t("footer.subscribe.subscribe")}</Button>
       </form>
     </div>
   );

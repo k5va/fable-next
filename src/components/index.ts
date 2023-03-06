@@ -33,3 +33,4 @@ export * from "./product-order-summary/product-order-summary";
 export * from "./promocode-form/promocode-form";
 export * from "./login-button/login-button";
 export * from "./container/container";
+export * from "./button/button";
