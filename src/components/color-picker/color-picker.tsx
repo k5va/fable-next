@@ -1,4 +1,4 @@
-import React, { Fragment } from "react";
+import React from "react";
 import { PRODUCT_COLORS } from "../../const";
 import { ColorPickerProps } from "./types";
 import { useTranslation } from "next-i18next";
@@ -16,7 +16,7 @@ export function ColorPicker({
     >
       <legend className="hidden">{t("product.color")}</legend>
       {PRODUCT_COLORS.map((color) => (
-        <Fragment key={color}>
+        <div key={color}>
           <input
             className="peer absolute appearance-none"
             id={color}
@@ -27,13 +27,13 @@ export function ColorPicker({
             onChange={() => onChange(color)}
           />
           <label
-            className="h-10 w-10 cursor-pointer peer-checked:border-2 peer-checked:border-solid peer-checked:border-black"
+            className="block h-10 w-10 cursor-pointer peer-checked:border-2 peer-checked:border-solid peer-checked:border-black"
             htmlFor={color}
             style={{ backgroundColor: color }}
           >
             <span className="sr-only">color</span>
           </label>
-        </Fragment>
+        </div>
       ))}
     </fieldset>
   );

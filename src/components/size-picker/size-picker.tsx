@@ -1,4 +1,4 @@
-import React, { Fragment } from "react";
+import React from "react";
 import { PRODUCT_SIZES } from "../../const";
 import { SizePickerProps } from "./types";
 import { useTranslation } from "next-i18next";
@@ -17,9 +17,9 @@ export function SizePicker({
     >
       <legend className="hidden">{t("product.size")}</legend>
       {PRODUCT_SIZES.map((size) => (
-        <Fragment key={size}>
+        <div key={size}>
           <input
-            className="peer relative appearance-none"
+            className={`peer absolute appearance-none`}
             id={size}
             name="size"
             type="radio"
@@ -30,13 +30,13 @@ export function SizePicker({
           <label
             className={classNames(
               "flex h-12 w-12 cursor-pointer items-center justify-center border-2 border-solid border-[#f1f1ef] text-xl font-normal",
-              "peer-checked:border-2 peer-checked:border-solid peer-checked:border-black"
+              `peer-checked:border-2 peer-checked:border-solid peer-checked:border-black`
             )}
             htmlFor={size}
           >
             {size}
           </label>
-        </Fragment>
+        </div>
       ))}
     </fieldset>
   );

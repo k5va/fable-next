@@ -8,14 +8,14 @@ export function ProductInfo(): JSX.Element {
   return (
     <div className="flex flex-wrap content-start gap-4 font-normal">
       <input
-        className="peer-[info] hidden"
+        className="peer/info hidden"
         type="radio"
         name="info"
         id="info"
         defaultChecked
       />
       <label
-        className="cursor-pointer text-xl opacity-30 peer-[info]:checked:opacity-100"
+        className="cursor-pointer text-xl opacity-30 peer-checked/info:opacity-100"
         htmlFor="info"
       >
         {t("product.info.description")}
@@ -23,7 +23,7 @@ export function ProductInfo(): JSX.Element {
       <p
         className={classNames(
           "order-1 hidden w-full",
-          "peer-[info]:checked:block"
+          "peer-checked/info:block"
         )}
       >
         Jacket made of a loose fit makes the product a universal element of the
@@ -31,14 +31,9 @@ export function ProductInfo(): JSX.Element {
         with FABLE pattern. Shoulder pads of medium rigidity for shaping.
       </p>
 
-      <input
-        className="peer-[size] hidden"
-        type="radio"
-        name="info"
-        id="size"
-      />
+      <input className="peer/size hidden" type="radio" name="info" id="size" />
       <label
-        className="cursor-pointer text-xl opacity-30 peer-[size]:checked:opacity-100"
+        className="cursor-pointer text-xl opacity-30 peer-checked/size:opacity-100"
         htmlFor="size"
       >
         {t("product.info.size")}
@@ -46,7 +41,7 @@ export function ProductInfo(): JSX.Element {
       <p
         className={classNames(
           "order-1 hidden w-full",
-          "peer-[size]:checked:block"
+          "peer-checked/size:block"
         )}
       >
         Lorem ipsum dolor sit, amet consectetur adipisicing elit. Consequuntur,
@@ -54,13 +49,13 @@ export function ProductInfo(): JSX.Element {
       </p>
 
       <input
-        className="peer-[details] hidden"
+        className="peer/details hidden"
         type="radio"
         name="info"
         id="details"
       />
       <label
-        className="cursor-pointer text-xl opacity-30 peer-[details]:checked:opacity-100"
+        className="cursor-pointer text-xl opacity-30 peer-checked/details:opacity-100"
         htmlFor="details"
       >
         {t("product.info.details")}
@@ -68,7 +63,7 @@ export function ProductInfo(): JSX.Element {
       <p
         className={classNames(
           "order-1 hidden w-full",
-          "peer-[details]:checked:block"
+          "peer-checked/details:block"
         )}
       >
         Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugiat
@@ -77,13 +72,13 @@ export function ProductInfo(): JSX.Element {
       </p>
 
       <input
-        className="peer-[delivery] hidden"
+        className="peer/delivery hidden"
         type="radio"
         name="info"
         id="delivery"
       />
       <label
-        className="cursor-pointer text-xl opacity-30 peer-[delivery]:checked:opacity-100"
+        className="cursor-pointer text-xl opacity-30 peer-checked/delivery:opacity-100"
         htmlFor="delivery"
       >
         {t("product.info.deliveryAndReturns")}
@@ -91,7 +86,7 @@ export function ProductInfo(): JSX.Element {
       <p
         className={classNames(
           "order-1 hidden w-full",
-          "peer-[delivery]:checked:block"
+          "peer-checked/delivery:block"
         )}
       >
         Lorem ipsum, dolor sit amet consectetur adipisicing elit. Nam commodi

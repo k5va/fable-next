@@ -15,6 +15,7 @@ export default async function handler(
       collection: true,
       category: true,
       image: true,
+      images: true,
     },
   });
 
