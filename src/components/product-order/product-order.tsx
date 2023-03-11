@@ -13,13 +13,13 @@ export function ProductOrder({ order }: ProductOrderProps): JSX.Element {
   const { t } = useTranslation();
 
   return (
-    <div className="grid grid-cols-2 gap-4">
-      <div className="col-span-1 bg-gray-300">
+    <div className="grid grid-cols-[163px,2fr] gap-4">
+      <div className="relative col-span-1 bg-gray-300">
         <Link href={`/product/${product.id}`}>
-          <Image src={product.image.src} alt={product.name} />
+          <Image fill src={product.image.src} alt={product.name} />
         </Link>
       </div>
-      <div className="col-span-2 grid grid-cols-3 grid-rows-5 items-end text-sm">
+      <div className="grid grid-cols-3 grid-rows-5 items-end text-sm">
         <p className="col-span-3 mb-2 text-base font-medium">{product.name}</p>
         <p className="col-span-3 mb-2">
           {t("product.collection")}: {collection?.name}
@@ -32,11 +32,11 @@ export function ProductOrder({ order }: ProductOrderProps): JSX.Element {
           {t("product.size")}: <span className="ml-4 font-medium">{size}</span>
         </p>
         <p className="col-span-1">
-          {t("product.color")}:{" "}
+          {t("product.color")}:
           <span className="ml-4 font-medium">{t(`colors.${color}`)}</span>
         </p>
         <div className="col-span-1 flex flex-nowrap justify-self-end">
-          {t("product.quantity")}:{" "}
+          {t("product.quantity")}:
           <div className="flex flex-nowrap gap-2">
             <button
               type="button"

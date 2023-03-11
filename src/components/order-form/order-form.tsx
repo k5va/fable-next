@@ -1,16 +1,23 @@
 import React, { useState } from "react";
 import { FormProvider, useForm } from "react-hook-form";
-import { Checkbox, RadioButton, TextArea, TextField } from "../../components";
+import {
+  Button,
+  Checkbox,
+  RadioButton,
+  TextArea,
+  TextField,
+} from "~/components";
 import { OrderFormFields } from "./types";
-import { useSubmitOrder } from "../../hooks";
+import { useSubmitOrder } from "~/hooks";
 import { useOrderFormError } from "./hooks/use-order-form-error";
 import { useTranslation } from "next-i18next";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { orderFormSchema } from "./order-form.schema";
+import { Legend } from "./ui/legend";
 
 const orderFormDefaults: OrderFormFields = {
   city: "",
-  delivery: "inStore",
+  delivery: "toDoor",
   address: "",
   loyaltyCard: "",
   name: "",
@@ -19,8 +26,6 @@ const orderFormDefaults: OrderFormFields = {
   payment: "card",
   comment: "",
 };
-
-const legendStyle = "text-xl font-medium mb-5";
 
 export function OrderForm(): JSX.Element {
   const [isAgreeOnTerms, setAgreeOnTerms] = useState(false);
@@ -41,13 +46,11 @@ export function OrderForm(): JSX.Element {
     <FormProvider {...methods}>
       <form
         onSubmit={handleSubmit(submitOrder)}
-        className="flex flex-col flex-nowrap gap-4"
+        className="flex flex-col gap-4"
       >
         {/* City */}
-        <fieldset className="w-[calc(50% - 0.5rem)]">
-          <legend className={legendStyle}>
-            {t("order.fields.city.label")}
-          </legend>
+        <fieldset className="w-[calc(50%-0.5rem)]">
+          <Legend text={t("order.fields.city.label")} />
           <TextField
             placeholder={t("order.fields.city.placeholder") || undefined}
             {...register("city")}
@@ -56,10 +59,8 @@ export function OrderForm(): JSX.Element {
         </fieldset>
 
         {/* Delivery */}
-        <fieldset className="flex flex-wrap gap-4">
-          <legend className={legendStyle}>
-            {t("order.fields.delivery.label")}
-          </legend>
+        <fieldset className="flex flex-nowrap gap-4">
+          <Legend text={t("order.fields.delivery.label")} />
           <RadioButton
             label={t("order.fields.delivery.inStore")}
             value="inStore"
@@ -74,9 +75,7 @@ export function OrderForm(): JSX.Element {
 
         {/* Address */}
         <fieldset>
-          <legend className={legendStyle}>
-            {t("order.fields.address.label")}
-          </legend>
+          <Legend text={t("order.fields.address.label")} />
           <TextField
             placeholder={t("order.fields.address.placeholder") || undefined}
             {...register("address")}
@@ -86,7 +85,7 @@ export function OrderForm(): JSX.Element {
 
         {/* Loyalty */}
         <fieldset className="w-[calc(50% - 0.5rem)]">
-          <legend className={legendStyle}>{t("order.fields.point")}</legend>
+          <Legend text={t("order.fields.point")} />
           <TextField
             label={t("order.fields.loyalty.label") || undefined}
             placeholder={t("order.fields.loyalty.placeholder") || undefined}
@@ -97,8 +96,7 @@ export function OrderForm(): JSX.Element {
 
         {/* recipient */}
         <fieldset className="flex flex-col flex-nowrap gap-2">
-          <legend className={legendStyle}>{t("order.fields.recipient")}</legend>
-
+          <Legend text={t("order.fields.recipient")} />
           <TextField
             label={t("order.fields.name.label") || undefined}
             placeholder={t("order.fields.name.placeholder") || undefined}
@@ -121,9 +119,7 @@ export function OrderForm(): JSX.Element {
         </fieldset>
 
         <fieldset>
-          <legend className={legendStyle}>
-            {t("order.fields.payment.label")}
-          </legend>
+          <Legend text={t("order.fields.payment.label")} />
           <RadioButton
             label={t("order.fields.payment.byCard")}
             value="card"
@@ -132,9 +128,7 @@ export function OrderForm(): JSX.Element {
         </fieldset>
 
         <fieldset>
-          <legend className={legendStyle}>
-            {t("order.fields.comment.label")}
-          </legend>
+          <Legend text={t("order.fields.comment.label")} />
           <TextArea
             {...register("comment")}
             error={getFieldError("comment", errors.comment?.type)}
@@ -145,9 +139,13 @@ export function OrderForm(): JSX.Element {
           checked={isAgreeOnTerms}
           onChange={() => setAgreeOnTerms((value) => !value)}
         />
-        <button className="button" type="submit" disabled={!isAgreeOnTerms}>
+        <Button
+          intent={isAgreeOnTerms ? "secondary" : "disabled"}
+          width="full"
+          type="submit"
+        >
           {t("order.fields.submitOrder")}
-        </button>
+        </Button>
       </form>
     </FormProvider>
   );

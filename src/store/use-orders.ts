@@ -18,18 +18,19 @@ type Actions = {
 
 export const useOrders = create(
   devtools(
-    // Supprt redux devtools
+    // Support redux devtools
     immer<State & Actions>((set) => ({
       orders: [],
       addOrder: (order: ProductOrder) =>
-        set((state) => state.orders.push(order)),
+        set((state) => {
+          state.orders.push(order);
+        }),
       removeOrder: (productId: string) =>
-        set(
-          (state) =>
-            (state.orders = state.orders.filter(
-              ({ product }) => product.id !== productId
-            ))
-        ),
+        set((state) => {
+          state.orders = state.orders.filter(
+            ({ product }) => product.id !== productId
+          );
+        }),
       incrementProductCount: (productId: string) =>
         set((state) => {
           const order = state.orders.find(
