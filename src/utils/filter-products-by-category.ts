@@ -4,6 +4,5 @@ export function filterProductsByCategory(
   { id }: Category,
   products: Product[]
 ): Product[] {
-  console.log("filterProductsByCategory called");
   return products.filter(({ categoryId }) => categoryId === id);
 }

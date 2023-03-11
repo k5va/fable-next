@@ -1,19 +1,13 @@
-import React from "react";
-import { CategoryProducts, Spinner } from "../../components";
+import React, { useContext } from "react";
+import { CategoryProducts } from "../../components";
 import { CollectionProductsProps } from "./types";
-import {
-  useFilterProductsByCollection,
-  useLoadCategories,
-  useLoadProducts,
-} from "../../hooks";
+import { useFilterProductsByCollection } from "../../hooks";
+import { HomePageContext } from "~/pages";
 
 export function CollectionProducts({
   collection,
 }: CollectionProductsProps): JSX.Element | null {
-  const { data: categories, isLoading: isCategoriesLoading } =
-    useLoadCategories();
-  const { data: products, isLoading: isProductsLoading } = useLoadProducts();
-  const isLoading = isCategoriesLoading && isProductsLoading;
+  const { categories, products } = useContext(HomePageContext);
   const collectionProducts = useFilterProductsByCollection(
     collection,
     products
@@ -22,22 +16,16 @@ export function CollectionProducts({
   return collectionProducts && collectionProducts.length > 0 ? (
     <div className="mb-12">
       <h3 className="text-center text-5xl uppercase">{collection.name}</h3>
-      {isLoading ? (
-        <Spinner />
-      ) : (
-        categories && (
-          <ul>
-            {categories.map((category) => (
-              <li key={category.id}>
-                <CategoryProducts
-                  category={category}
-                  products={collectionProducts}
-                />
-              </li>
-            ))}
-          </ul>
-        )
-      )}
+      <ul>
+        {categories.map((category) => (
+          <li key={category.id}>
+            <CategoryProducts
+              category={category}
+              products={collectionProducts}
+            />
+          </li>
+        ))}
+      </ul>
     </div>
   ) : null;
 }
