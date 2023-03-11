@@ -1,6 +1,7 @@
 import React from "react";
 import { useTranslation } from "next-i18next";
 import { TextField } from "../text-field/text-field";
+import { Button } from "~/components";
 
 export function PromocodeForm(): JSX.Element {
   const { t } = useTranslation();
@@ -14,9 +15,9 @@ export function PromocodeForm(): JSX.Element {
         placeholder={t("order.fields.promoCode.placeholder") || undefined}
         name="promoCode"
       />
-      <button className="promocode-form__submit button" type="submit">
+      <Button intent="secondary" type="submit">
         {t("order.fields.promoCode.apply")}
-      </button>
+      </Button>
     </form>
   );
 }

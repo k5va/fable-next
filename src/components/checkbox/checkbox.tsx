@@ -1,25 +1,32 @@
-import React, { useId } from "react";
-import { CheckboxProps } from "./types";
+import React, { InputHTMLAttributes, useId } from "react";
 
-export function Checkbox({ label, ...inputProps }: CheckboxProps): JSX.Element {
+export type CheckboxProps = InputHTMLAttributes<HTMLInputElement> & {
+  label?: string;
+};
+
+export function Checkbox({
+  label,
+  checked,
+  ...inputProps
+}: CheckboxProps): JSX.Element {
   const id = useId();
 
   return (
     <div className="relative">
       <input
-        className="peer absolute appearance-none"
+        className="absolute appearance-none"
         id={id}
         type="checkbox"
         {...inputProps}
       />
-      <label
-        className="peer-checked:before:content['X'] 
-          flex flex-nowrap items-center gap-4 
-          before:flex before:h-4 before:w-4 before:cursor-pointer before:items-center 
-          before:justify-center before:border before:border-solid before:border-black
-          before:content-none"
-        htmlFor={id}
-      >
+      <label className="flex cursor-pointer items-center gap-4" htmlFor={id}>
+        <span
+          role="presentation"
+          aria-hidden
+          className="flex h-4 w-4 items-center justify-center border border-solid border-black"
+        >
+          {checked && "X"}
+        </span>
         {label}
       </label>
     </div>

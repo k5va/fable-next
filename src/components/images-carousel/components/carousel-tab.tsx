@@ -1,3 +1,4 @@
+import classNames from "classnames";
 import React, { useId } from "react";
 
 type CarouselTabProps = {
@@ -14,7 +15,7 @@ export const CarouselTab = ({
   return (
     <div className="h-4 w-full">
       <input
-        className="peer/image absolute appearance-none"
+        className="absolute appearance-none"
         id={inputId}
         type="radio"
         checked={checked}
@@ -24,13 +25,13 @@ export const CarouselTab = ({
           }
         }}
       />
-      <label
-        className="relative block h-full cursor-pointer 
-        before:absolute before:top-1/2 before:block before:h-[2px] before:w-full before:rounded 
-      before:bg-black before:opacity-10 before:content-[''] 
-        peer-checked/image:before:opacity-100"
-        htmlFor={inputId}
-      >
+      <label className="relative block h-full cursor-pointer" htmlFor={inputId}>
+        <span
+          className={classNames(
+            "absolute top-1/2 block h-[2px] w-full rounded bg-black opacity-10",
+            { "opacity-100": checked }
+          )}
+        ></span>
         <p className="sr-only">select image</p>
       </label>
     </div>

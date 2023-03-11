@@ -2,6 +2,7 @@ import React from "react";
 import { PRODUCT_COLORS } from "../../const";
 import { ColorPickerProps } from "./types";
 import { useTranslation } from "next-i18next";
+import classNames from "classnames";
 
 export function ColorPicker({
   selected,
@@ -18,7 +19,7 @@ export function ColorPicker({
       {PRODUCT_COLORS.map((color) => (
         <div key={color}>
           <input
-            className="peer absolute appearance-none"
+            className="absolute appearance-none"
             id={color}
             name="color"
             type="radio"
@@ -27,7 +28,9 @@ export function ColorPicker({
             onChange={() => onChange(color)}
           />
           <label
-            className="block h-10 w-10 cursor-pointer peer-checked:border-2 peer-checked:border-solid peer-checked:border-black"
+            className={classNames("block h-10 w-10 cursor-pointer", {
+              "border-2 border-solid border-black": color === selected,
+            })}
             htmlFor={color}
             style={{ backgroundColor: color }}
           >

@@ -1,33 +1,24 @@
-import React, { FormEventHandler, MouseEventHandler, useState } from "react";
-import { ColorPicker, SizePicker } from "../../components";
+import React, { FormEventHandler, useState } from "react";
+import { Button, ColorPicker, SizePicker } from "~/components";
 import { AddToCartFormProps } from "./types";
 import { useTranslation } from "next-i18next";
-import { useAddToOrder } from "../../hooks";
-import { ProductColor, ProductSize } from "../../types";
-// import { getProductOrderById } from "../../store";
+import { ProductColor, ProductSize } from "~/types";
 import {
   DEFAULT_PRODUCT_COLOR,
   DEFAULT_PRODUCT_ORDER_COUNT,
   DEFAULT_PRODUCT_SIZE,
 } from "./add-to-cart-form.const";
-// import { useNavigate } from "react-router-dom";
-// import { AppRoute } from "../../const";
-import classNames from "classnames";
-import { useOrders } from "~/store";
+import { AppRoute } from "~/const";
+import { useAddToCart } from "./hooks/use-add-to-cart";
+import { useRouter } from "next/router";
 
 export function AddToCartForm({ product }: AddToCartFormProps) {
   const { id: productId, name, price } = product;
   const { t } = useTranslation();
-  // const navigate = useNavigate();
-  const addProductToOrder = useAddToOrder();
-  // TODO: useCallback?
-  const isAddedToCart = Boolean(
-    useOrders((state) =>
-      state.orders.find(({ product }) => product.id === productId)
-    )
-  );
+  const router = useRouter();
   const [size, setSize] = useState<ProductSize>(DEFAULT_PRODUCT_SIZE);
   const [color, setColor] = useState<ProductColor>(DEFAULT_PRODUCT_COLOR);
+  const [isAddedToCart, addProductToOrder] = useAddToCart(productId);
 
   const handleSubmit: FormEventHandler<HTMLFormElement> = (e) => {
     e.preventDefault();
@@ -37,14 +28,7 @@ export function AddToCartForm({ product }: AddToCartFormProps) {
       color,
       count: DEFAULT_PRODUCT_ORDER_COUNT,
     });
-  };
-
-  const handleAddToCartClick: MouseEventHandler<HTMLButtonElement> = (e) => {
-    if (isAddedToCart) {
-      e.preventDefault();
-      // navigate(AppRoute.ORDER);
-      return;
-    }
+    return router.push(AppRoute.ORDER);
   };
 
   return (
@@ -60,17 +44,11 @@ export function AddToCartForm({ product }: AddToCartFormProps) {
         <div>
           <SizePicker selected={size} onChange={setSize} />
         </div>
-        <button
-          className={classNames("button", "self-start px-16", {
-            "border-green-500 bg-green-500 text-white": isAddedToCart,
-          })}
-          type="submit"
-          onClick={handleAddToCartClick}
-        >
+        <Button type="submit" intent={isAddedToCart ? "disabled" : "secondary"}>
           {t(
             isAddedToCart ? "product.goToCartButton" : "product.addToCartButton"
           )}
-        </button>
+        </Button>
       </form>
     </section>
   );

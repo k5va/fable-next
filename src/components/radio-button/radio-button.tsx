@@ -27,8 +27,8 @@ export const RadioButton = forwardRef(function RadioButton(
       />
       <label
         className={classNames(
-          "block cursor-pointer self-auto border border-solid border-black bg-black px-0 py-2 text-center text-xl text-white",
-          "peer-checked:bg-white peer-checked:text-black"
+          "block cursor-pointer self-auto border border-solid border-black bg-white px-0 py-2 text-center text-xl text-black",
+          "peer-checked:bg-black peer-checked:text-white"
         )}
         htmlFor={id}
       >
