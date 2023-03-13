@@ -7,12 +7,13 @@ import React, {
 } from "react";
 
 const textFieldStyles = cva(
-  "focus:shadow-outline w-full border border-solid bg-white py-3 px-4 text-xl text-black outline-none",
+  "focus:shadow-outline w-full border border-solid py-3 px-4 text-xl outline-none",
   {
     variants: {
       intent: {
-        primary: "border-black shadow-black",
-        error: "border-red-500 shadow-red-500",
+        primary: "border-black shadow-black bg-white text-black",
+        secondary: "border-white shadow-white bg-black text-white",
+        error: "border-red-500 shadow-red-500 bg-white text-red-500",
       },
     },
     defaultVariants: {

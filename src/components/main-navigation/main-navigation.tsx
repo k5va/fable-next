@@ -4,7 +4,7 @@ import { Logo, CatalogMenu, CartLink, ChangeLanguage } from "../../components";
 export function MainNavigation(): JSX.Element {
   return (
     <nav className="flex flex-wrap justify-between py-7 px-0 uppercase">
-      <div className="main-nav__logo">
+      <div className="medium:hidden">
         <Logo />
       </div>
       <CatalogMenu />

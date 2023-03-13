@@ -15,7 +15,9 @@ export function CollectionProducts({
 
   return collectionProducts && collectionProducts.length > 0 ? (
     <div className="mb-12">
-      <h3 className="text-center text-5xl uppercase">{collection.name}</h3>
+      <h3 className="text-center text-5xl uppercase small:text-3xl">
+        {collection.name}
+      </h3>
       <ul>
         {categories.map((category) => (
           <li key={category.id}>

@@ -10,13 +10,21 @@ export function ProductCard({ product }: ProductCardProps): JSX.Element {
 
   return (
     <div className="flex flex-col items-center">
-      <div className="mb-8 bg-gray-300">
+      <div className="mb-8 bg-gray-300 small:mb-4">
         <Link href={`/product/${id}`}>
           <Image width="427" height="427" src={image.src} alt={name} />
         </Link>
       </div>
-      <h5 className="mb-2 text-lg font-normal opacity-40">{name}</h5>
-      <p className="text-2xl">{t("main.product.price", { price })}</p>
+      <h5
+        className="
+          mb-2 text-lg font-normal opacity-40 
+          small:mb-0 small:text-xs"
+      >
+        {name}
+      </h5>
+      <p className="text-2xl small:text-sm">
+        {t("main.product.price", { price })}
+      </p>
     </div>
   );
 }

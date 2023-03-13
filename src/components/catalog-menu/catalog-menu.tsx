@@ -9,10 +9,10 @@ export function CatalogMenu(): JSX.Element {
 
   return (
     <>
-      <Link href={AppRoute.ROOT} className="hidden">
+      <Link href={AppRoute.ROOT} className="hidden small:block">
         {t("header.menu.catalogue")}
       </Link>
-      <ul className="flex flex-wrap gap-9">
+      <ul className="flex flex-wrap gap-9 small:hidden">
         {menuRoutes.map(({ link, text }, index) => (
           <li key={index}>
             <Link href={link}>{t(text)}</Link>

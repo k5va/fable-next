@@ -15,8 +15,8 @@ export function SortingSelect(): JSX.Element {
     changeSorting(target.value as ProductSortingType);
 
   return (
-    <div className="relative top-24 flex justify-end">
-      <label className="text-2xl">
+    <div className="relative top-24 flex justify-end small:top-20">
+      <label className="text-2xl small:text-sm">
         {t("main.sorting.label")}
         <select
           className="ml-5 border-none"
