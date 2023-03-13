@@ -2,7 +2,7 @@ import React, { ButtonHTMLAttributes, PropsWithChildren } from "react";
 import { cva, VariantProps } from "class-variance-authority";
 
 const buttonStyles = cva(
-  "text-xl py-2 px-10 cursor-pointer border border-solid",
+  "text-xl py-2 px-10 cursor-pointer border border-solid transition hover:opacity-80",
   {
     variants: {
       intent: {

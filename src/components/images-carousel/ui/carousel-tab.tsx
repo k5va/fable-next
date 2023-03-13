@@ -25,7 +25,10 @@ export const CarouselTab = ({
           }
         }}
       />
-      <label className="relative block h-full cursor-pointer" htmlFor={inputId}>
+      <label
+        className="relative block h-full cursor-pointer transition hover:-translate-y-1 hover:scale-110"
+        htmlFor={inputId}
+      >
         <span
           className={classNames(
             "absolute top-1/2 block h-[2px] w-full rounded bg-black opacity-10",
