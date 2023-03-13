@@ -1,9 +1,10 @@
 import React from "react";
 import { ImagesCarouselProps } from "./types";
 import Image from "next/image";
-import { Button } from "~/components";
+import { BiChevronLeft, BiChevronRight } from "react-icons/bi";
 import { useCarousel } from "./hooks/use-carousel";
-import { CarouselTab } from "./components/carousel-tab";
+import { CarouselTab } from "./ui/carousel-tab";
+import { CarouselButton } from "./ui/carousel-button";
 
 export function ImagesCarousel({
   images,
@@ -14,7 +15,7 @@ export function ImagesCarousel({
 
   return (
     <div className="h-full">
-      <div className="relative min-h-[675px]">
+      <div className="relative min-h-[675px] small:min-h-[375px]">
         <div className="absolute top-1 z-10 flex w-full flex-nowrap gap-4 py-0 px-4">
           {images.map(({ id }, index) => (
             <CarouselTab
@@ -26,26 +27,16 @@ export function ImagesCarousel({
         </div>
         <Image fill src={images[currentIndex]?.src as string} alt={caption} />
         {/* Previous image button */}
-        <div className="absolute top-[calc(50%_-_24px)] left-4">
-          <Button
-            type="button"
-            shape="round"
-            aria-label="Previous image"
-            onClick={handlePrevClick}
-          >
-            ❮
-          </Button>
+        <div className="absolute top-[calc(50%_-_24px)] left-4 small:left-3">
+          <CarouselButton label="Previous image" onClick={handlePrevClick}>
+            <BiChevronLeft className="text-3xl small:text-xl" />
+          </CarouselButton>
         </div>
         {/* Next image button */}
-        <div className="absolute top-[calc(50%_-_24px)] right-4">
-          <Button
-            type="button"
-            shape="round"
-            aria-label="Next image"
-            onClick={handleNextClick}
-          >
-            ❯
-          </Button>
+        <div className="absolute top-[calc(50%_-_24px)] right-4 small:right-3">
+          <CarouselButton label="Next image" onClick={handleNextClick}>
+            <BiChevronRight className="text-3xl small:text-xl" />
+          </CarouselButton>
         </div>
       </div>
     </div>

@@ -32,16 +32,39 @@ export function AddToCartForm({ product }: AddToCartFormProps) {
   };
 
   return (
-    <section className="flex flex-col flex-nowrap">
-      <p className="mb-8 text-3xl">{name}</p>
-      <p className="mb-8 text-3xl">{t("main.product.price", { price })}</p>
-      <form className="flex flex-col flex-nowrap gap-8" onSubmit={handleSubmit}>
+    <section
+      className="
+        flex flex-col flex-nowrap 
+        medium:items-center
+        "
+    >
+      <p
+        className="
+        mb-8 text-3xl 
+        medium:mb-1 medium:opacity-40
+        small:text-xs"
+      >
+        {name}
+      </p>
+      <p
+        className="
+        mb-8 text-3xl
+        small:mb-4 small:text-base"
+      >
+        {t("main.product.price", { price })}
+      </p>
+      <form
+        className="
+          flex flex-col flex-nowrap gap-8 
+          medium:items-center"
+        onSubmit={handleSubmit}
+      >
         <input type="hidden" name="productId" value={product.id} />
         <input type="hidden" name="count" value={DEFAULT_PRODUCT_ORDER_COUNT} />
         <div>
           <ColorPicker selected={color} onChange={setColor} />
         </div>
-        <div>
+        <div className="medium:order-first">
           <SizePicker selected={size} onChange={setSize} />
         </div>
         <Button type="submit" intent={isAddedToCart ? "disabled" : "secondary"}>

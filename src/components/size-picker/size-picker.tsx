@@ -15,7 +15,13 @@ export function SizePicker({
       className="relative flex flex-nowrap gap-8"
       aria-label="Select product size"
     >
-      <legend className="hidden">{t("product.size")}</legend>
+      <legend
+        className="
+          hidden
+          small:mx-auto small:mt-0 small:mb-4 small:block small:text-base small:font-normal"
+      >
+        {t("product.size")}
+      </legend>
       {PRODUCT_SIZES.map((size) => (
         <div key={size}>
           <input
@@ -30,6 +36,7 @@ export function SizePicker({
           <label
             className={classNames(
               "flex h-12 w-12 cursor-pointer items-center justify-center border-2 border-solid border-[#f1f1ef] text-xl font-normal",
+              "small:h-10 small:w-10",
               {
                 "border-2 border-solid border-black": size === selected,
               }

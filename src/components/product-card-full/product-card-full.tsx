@@ -11,11 +11,17 @@ export function ProductCardFull(): JSX.Element {
   return (
     <>
       {product && (
-        <section className="grid h-full grid-cols-2 grid-rows-[auto,auto,1fr] gap-6 py-0">
-          <div className="col-span-2">
+        <section
+          className="
+            grid h-full grid-cols-2 grid-rows-[auto,auto,1fr] gap-6 py-0
+            medium:grid-cols-1 medium:grid-rows-none
+            small:gap-4
+            "
+        >
+          <div className="col-span-2 medium:col-auto">
             <ProductBreadcrumbs />
           </div>
-          <div className="row-span-2">
+          <div className="row-span-2 medium:row-auto">
             <ImagesCarousel images={product.images} caption={product.name} />
           </div>
           <AddToCartForm product={product} />

@@ -1,4 +1,3 @@
-import classNames from "classnames";
 import React from "react";
 import { useTranslation } from "next-i18next";
 
@@ -6,7 +5,11 @@ export function ProductInfo(): JSX.Element {
   const { t } = useTranslation();
 
   return (
-    <div className="flex flex-wrap content-start gap-4 font-normal">
+    <div
+      className="
+      flex flex-wrap content-start gap-4 font-normal
+      small:flex-col small:flex-nowrap"
+    >
       <input
         className="peer/info hidden"
         type="radio"
@@ -21,10 +24,9 @@ export function ProductInfo(): JSX.Element {
         {t("product.info.description")}
       </label>
       <p
-        className={classNames(
-          "order-1 hidden w-full",
-          "peer-checked/info:block"
-        )}
+        className="
+          order-1 hidden w-full peer-checked/info:block
+          small:order-none"
       >
         Jacket made of a loose fit makes the product a universal element of the
         upper layer. Two patch pockets and one hidden pocket. Branded lining
@@ -39,10 +41,9 @@ export function ProductInfo(): JSX.Element {
         {t("product.info.size")}
       </label>
       <p
-        className={classNames(
-          "order-1 hidden w-full",
-          "peer-checked/size:block"
-        )}
+        className="
+          order-1 hidden w-full peer-checked/size:block
+          small:order-none"
       >
         Lorem ipsum dolor sit, amet consectetur adipisicing elit. Consequuntur,
         esse?
@@ -61,10 +62,9 @@ export function ProductInfo(): JSX.Element {
         {t("product.info.details")}
       </label>
       <p
-        className={classNames(
-          "order-1 hidden w-full",
-          "peer-checked/details:block"
-        )}
+        className="
+          order-1 hidden w-full peer-checked/details:block
+          small:order-none"
       >
         Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugiat
         voluptates quisquam architecto perferendis, tenetur nam dolorum. Fuga
@@ -84,10 +84,9 @@ export function ProductInfo(): JSX.Element {
         {t("product.info.deliveryAndReturns")}
       </label>
       <p
-        className={classNames(
-          "order-1 hidden w-full",
-          "peer-checked/delivery:block"
-        )}
+        className="
+          order-1 hidden w-full peer-checked/delivery:block
+          small:order-none"
       >
         Lorem ipsum, dolor sit amet consectetur adipisicing elit. Nam commodi
         quas nemo provident, tenetur asperiores ipsa iusto blanditiis assumenda,
