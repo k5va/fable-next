@@ -14,30 +14,34 @@ export function ImagesCarousel({
     useCarousel(images.length);
 
   return (
-    <div className="h-full">
-      <div className="relative min-h-[675px] small:min-h-[375px]">
-        <div className="absolute top-1 z-10 flex w-full flex-nowrap gap-4 py-0 px-4">
-          {images.map(({ id }, index) => (
-            <CarouselTab
-              key={id}
-              checked={index === currentIndex}
-              onChecked={() => setCurrentIndex(index)}
-            />
-          ))}
-        </div>
-        <Image fill src={images[currentIndex]?.src as string} alt={caption} />
-        {/* Previous image button */}
-        <div className="absolute top-[calc(50%_-_24px)] left-4 small:left-3">
-          <CarouselButton label="Previous image" onClick={handlePrevClick}>
-            <BiChevronLeft className="text-3xl small:text-xl" />
-          </CarouselButton>
-        </div>
-        {/* Next image button */}
-        <div className="absolute top-[calc(50%_-_24px)] right-4 small:right-3">
-          <CarouselButton label="Next image" onClick={handleNextClick}>
-            <BiChevronRight className="text-3xl small:text-xl" />
-          </CarouselButton>
-        </div>
+    <div className="relative">
+      <div className="absolute top-1 z-10 flex w-full flex-nowrap gap-4 py-0 px-4">
+        {images.map(({ id }, index) => (
+          <CarouselTab
+            key={id}
+            checked={index === currentIndex}
+            onChecked={() => setCurrentIndex(index)}
+          />
+        ))}
+      </div>
+      <Image
+        width="650"
+        height="675"
+        className="w-full"
+        src={images[currentIndex]?.src as string}
+        alt={caption}
+      />
+      {/* Previous image button */}
+      <div className="absolute top-[calc(50%-24px)] left-4 small:left-3">
+        <CarouselButton label="Previous image" onClick={handlePrevClick}>
+          <BiChevronLeft className="text-3xl small:text-xl" />
+        </CarouselButton>
+      </div>
+      {/* Next image button */}
+      <div className="absolute top-[calc(50%-24px)] right-4 small:right-3">
+        <CarouselButton label="Next image" onClick={handleNextClick}>
+          <BiChevronRight className="text-3xl small:text-xl" />
+        </CarouselButton>
       </div>
     </div>
   );

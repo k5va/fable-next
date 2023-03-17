@@ -2,12 +2,14 @@ import React, { ButtonHTMLAttributes, PropsWithChildren } from "react";
 import { cva, VariantProps } from "class-variance-authority";
 
 const buttonStyles = cva(
-  "text-xl py-2 px-10 cursor-pointer border border-solid transition hover:opacity-80",
+  "text-xl py-2 px-10 cursor-pointer border border-solid",
   {
     variants: {
       intent: {
-        primary: "text-black bg-white border-white",
-        secondary: "text-white bg-black border-black",
+        primary:
+          "text-black bg-white border-white transition hover:-translate-y-[2px]",
+        secondary:
+          "text-white bg-black border-black transition hover:-translate-y-[2px]",
         disabled: "text-white bg-gray-400 border-gray-400",
       },
       width: {

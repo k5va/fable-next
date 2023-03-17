@@ -49,7 +49,11 @@ export function OrderForm(): JSX.Element {
         className="flex flex-col gap-4"
       >
         {/* City */}
-        <fieldset className="w-[calc(50%-0.5rem)]">
+        <fieldset
+          className="
+            w-[calc(50%-0.5rem)] 
+            small:w-full"
+        >
           <Legend text={t("order.fields.city.label")} />
           <TextField
             placeholder={t("order.fields.city.placeholder") || undefined}
@@ -59,7 +63,11 @@ export function OrderForm(): JSX.Element {
         </fieldset>
 
         {/* Delivery */}
-        <fieldset className="flex flex-nowrap gap-4">
+        <fieldset
+          className="
+            flex flex-nowrap gap-4 
+            small:flex-wrap"
+        >
           <Legend text={t("order.fields.delivery.label")} />
           <RadioButton
             label={t("order.fields.delivery.inStore")}
@@ -84,7 +92,11 @@ export function OrderForm(): JSX.Element {
         </fieldset>
 
         {/* Loyalty */}
-        <fieldset className="w-[calc(50% - 0.5rem)]">
+        <fieldset
+          className="
+            w-[calc(50%-0.5rem)] 
+            small:w-full"
+        >
           <Legend text={t("order.fields.point")} />
           <TextField
             label={t("order.fields.loyalty.label") || undefined}

@@ -1,10 +1,17 @@
 import React from "react";
+import { ImSpinner6 } from "react-icons/im";
 
 export function Spinner(): JSX.Element {
   return (
     <div
-      role="progressbar"
-      className="before:fixed before:top-1/2 before:left-1/2 before:h-10 before:w-10 before:animate-spin before:rounded before:border-4 before:border-gray-200 before:border-b-[#1c87c9]"
-    ></div>
+      className="absolute top-0 left-0 h-full w-full bg-black/10"
+      role="presentation"
+      aria-hidden
+    >
+      <ImSpinner6
+        className="relative top-1/2 left-1/2 animate-spin text-blue-400"
+        size="50"
+      />
+    </div>
   );
 }

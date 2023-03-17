@@ -8,14 +8,16 @@ export function PromocodeForm(): JSX.Element {
 
   return (
     <form
-      className="flex flex-nowrap justify-between gap-4"
+      className="
+        grid grid-cols-[1fr,auto] gap-4 
+        small:grid-cols-1"
       onSubmit={(e) => e.preventDefault()}
     >
       <TextField
         placeholder={t("order.fields.promoCode.placeholder") || undefined}
         name="promoCode"
       />
-      <Button intent="secondary" type="submit">
+      <Button intent="secondary" width="full" type="submit">
         {t("order.fields.promoCode.apply")}
       </Button>
     </form>
