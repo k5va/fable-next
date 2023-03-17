@@ -1,0 +1,125 @@
+{
+  "fable": "Интернет магазин Fable",
+  "header": {
+    "menu": {
+      "catalogue": "Каталог",
+      "collections": "Коллекции",
+      "customizer": "Конструктор",
+      "sale": "Sale"
+    },
+    "language": "RUS",
+    "items": "Корзина"
+  },
+  "footer": {
+    "menu": {
+      "brand": "О бренде",
+      "guarantee": "Гарантия",
+      "сampaign": "О компании",
+      "care": "Уход",
+      "store": "Магазин",
+      "delivery": "Доставка & Возвраты"
+    },
+    "subscribe": {
+      "discount": "Дарим 10% скидку за подписку",
+      "subscribe": "Подписаться",
+      "emailPlaceholder": "Введите email"
+    }
+  },
+  "main": {
+    "product": {
+      "price": "{{price}} ₽"
+    },
+    "sorting": {
+      "type_New": "По новизне",
+      "type_Price": "По цене",
+      "label": "Сортировать"
+    }
+  },
+  "product": {
+    "info": {
+      "description": "Описание",
+      "size": "Размеры",
+      "details": "Ткань",
+      "deliveryAndReturns": "Доставка & Возврат"
+    },
+    "size": "Размер",
+    "color": "Цвет",
+    "quantity": "Количество",
+    "price": "Цена",
+    "delete": "Удалить",
+    "article": "Артикул",
+    "collection": "Коллекция",
+    "addToCartButton": "Добавить в корзину",
+    "goToCartButton": "Перейти в корзину"
+  },
+  "order": {
+    "fields": {
+      "city": {
+        "label": "Ваш город",
+        "placeholder": "Москва"
+      },
+      "address": {
+        "label": "Адрес",
+        "placeholder": "115326, Пятницкая 25/1 кв 6"
+      },
+      "delivery": {
+        "label": "Способ доставки",
+        "inStore": "В магазин",
+        "toTheDoor": "До двери"
+      },
+      "point": "Баллы",
+      "loyalty": {
+        "label": "Введите карту лояльности",
+        "placeholder": "9204"
+      },
+      "recipient": "Данные получателя",
+      "name": {
+        "label": "Имя и фамилия",
+        "placeholder": "Дарья Пчелинцева"
+      },
+      "phone": {
+        "label": "Телефон",
+        "placeholder": "+7(999)899-34-11"
+      },
+      "email": {
+        "label": "Почта",
+        "placeholder": "daruapchelinceva@gmail.com"
+      },
+      "payment": {
+        "label": "Способы оплаты",
+        "byCard": "Картой на сайте"
+      },
+      "comment": {
+        "label": "Комментарий к заказу"
+      },
+      "agreeWithTerms": "Я соглашаюсь с условием оферты и политикой лояльности",
+      "submitOrder": "Заказать",
+      "price": {
+        "summary": "Сумма",
+        "delivery": "Доставка",
+        "promocode": "Промокод",
+        "total": "Итог"
+      },
+      "promoCode": {
+        "placeholder": "Введите промокод",
+        "apply": "Применить"
+      }
+    },
+    "errors": {
+      "maxLength": "Не более {{maxLength}} символов",
+      "minLength": "Не менее {{minLength}} символов",
+      "email": "Не верный формат почты",
+      "required": "Введите значение"
+    }
+  },
+  "colors": {
+    "#F4E1CC": "Бежевый",
+    "#262626": "Черный",
+    "#9FAED9": "Фиолетовый ",
+    "#56AA91": "Зеленый",
+    "#707070": "Серый",
+    "#743821": "Коричневый",
+    "#C89607": "Желтый",
+    "#214133": "Зеленый"
+  }
+}

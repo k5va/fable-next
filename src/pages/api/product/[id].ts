@@ -14,6 +14,8 @@ export default async function handler(
     include: {
       collection: true,
       category: true,
+      image: true,
+      images: true,
     },
   });
 

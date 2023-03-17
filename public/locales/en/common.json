@@ -1,0 +1,125 @@
+{
+  "fable": "Fable online store",
+  "header": {
+    "menu": {
+      "catalogue": "Catalogue",
+      "collections": "Collections",
+      "customizer": "Customizer",
+      "sale": "Sale"
+    },
+    "language": "eng",
+    "items": "Items"
+  },
+  "footer": {
+    "menu": {
+      "brand": "Brand",
+      "guarantee": "Guarantee",
+      "сampaign": "Campaign",
+      "care": "Clothing care",
+      "store": "Store",
+      "delivery": "Delivery & Returns"
+    },
+    "subscribe": {
+      "discount": "We give you a 10% discount for subscription",
+      "subscribe": "Subscribe",
+      "emailPlaceholder": "Enter your email"
+    }
+  },
+  "main": {
+    "product": {
+      "price": "€{{price}}"
+    },
+    "sorting": {
+      "type_New": "New",
+      "type_Price": "Price",
+      "label": "Sort by"
+    }
+  },
+  "product": {
+    "info": {
+      "description": "Product info",
+      "size": "Size",
+      "details": "Details",
+      "deliveryAndReturns": "Delivery & Returns"
+    },
+    "size": "Size",
+    "color": "Color",
+    "quantity": "Quantity",
+    "price": "Price",
+    "delete": "Delete",
+    "article": "Article",
+    "collection": "Collection",
+    "addToCartButton": "Add to cart",
+    "goToCartButton": "Go to cart"
+  },
+  "order": {
+    "fields": {
+      "city": {
+        "label": "City",
+        "placeholder": "Enter city"
+      },
+      "address": {
+        "label": "Address",
+        "placeholder": "Enter address"
+      },
+      "delivery": {
+        "label": "Delivery method",
+        "inStore": "In-store pick up",
+        "toTheDoor": "To the door"
+      },
+      "point": "Point",
+      "loyalty": {
+        "label": "Enter your loyalty card",
+        "placeholder": "Enter loyalty card"
+      },
+      "recipient": "Recipient's details",
+      "name": {
+        "label": "Name and surname",
+        "placeholder": "Enter name and surname"
+      },
+      "phone": {
+        "label": "Phone",
+        "placeholder": "Enter phone number"
+      },
+      "email": {
+        "label": "Email",
+        "placeholder": "Enter email"
+      },
+      "payment": {
+        "label": "Payment method",
+        "byCard": "Payment card"
+      },
+      "comment": {
+        "label": "Order comment"
+      },
+      "agreeWithTerms": "I agree to the terms of the offer and the loyalty policy",
+      "submitOrder": "Place an order",
+      "price": {
+        "summary": "Summary",
+        "delivery": "Delivery",
+        "promocode": "Promocode",
+        "total": "Total"
+      },
+      "promoCode": {
+        "placeholder": "Enter promocode",
+        "apply": "Apply"
+      }
+    },
+    "errors": {
+      "maxLength": "Must contain not more than {{maxLength}} characters",
+      "minLength": "Must contain at least {{minLength}} characters",
+      "email": "Email is not valid",
+      "required": "Enter field value"
+    }
+  },
+  "colors": {
+    "#F4E1CC": "Beige",
+    "#262626": "Black",
+    "#9FAED9": "Violet ",
+    "#56AA91": "Green",
+    "#707070": "Gray",
+    "#743821": "Brown",
+    "#C89607": "Yellow",
+    "#214133": "Green"
+  }
+}
