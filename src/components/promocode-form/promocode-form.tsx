@@ -1,6 +1,6 @@
 import React from "react";
 import { useTranslation } from "next-i18next";
-import { TextField } from "../text-field/text-field";
+import { TextField } from "../ui/text-field/text-field";
 import { Button } from "~/components";
 
 export function PromocodeForm(): JSX.Element {
