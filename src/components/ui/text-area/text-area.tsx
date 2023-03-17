@@ -7,12 +7,12 @@ import React, {
 } from "react";
 
 const textAreaStyles = cva(
-  "focus:shadow-outline w-full border border-solid bg-white py-3 px-4 text-xl text-black outline-none",
+  "focus:shadow-outline w-full border border-solid bg-secondary py-3 px-4 text-xl text-primary outline-none",
   {
     variants: {
       intent: {
-        primary: "border-black shadow-black",
-        error: "border-red-500 shadow-red-500",
+        primary: "border-primary shadow-primary",
+        error: "border-alert shadow-alert",
       },
     },
     defaultVariants: {
@@ -51,7 +51,7 @@ export const TextArea = forwardRef(function TextArea(
         {...inputProps}
       ></textarea>
       {error && (
-        <p id={errorId} className="text-xs text-red-500" role="alert">
+        <p id={errorId} className="text-xs text-alert" role="alert">
           {error}
         </p>
       )}

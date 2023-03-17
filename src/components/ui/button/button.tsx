@@ -7,10 +7,10 @@ const buttonStyles = cva(
     variants: {
       intent: {
         primary:
-          "text-black bg-white border-white transition hover:-translate-y-[2px]",
+          "text-primary bg-secondary border-secondary transition hover:-translate-y-[2px]",
         secondary:
-          "text-white bg-black border-black transition hover:-translate-y-[2px]",
-        disabled: "text-white bg-gray-400 border-gray-400",
+          "text-secondary bg-primary border-primary transition hover:-translate-y-[2px]",
+        disabled: "text-primary bg-disabled border-disabled",
       },
       width: {
         content: "w-fit",
@@ -42,7 +42,11 @@ export const Button = ({
   ...props
 }: ButtonProps): JSX.Element => {
   return (
-    <button className={buttonStyles({ intent, width, shape })} {...props}>
+    <button
+      className={buttonStyles({ intent, width, shape })}
+      disabled={intent === "disabled"}
+      {...props}
+    >
       {children}
     </button>
   );

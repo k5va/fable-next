@@ -23,7 +23,7 @@ export function Checkbox({
         <span
           role="presentation"
           aria-hidden
-          className="flex h-4 w-4 items-center justify-center border border-solid border-black"
+          className="flex h-4 w-4 items-center justify-center border border-solid border-primary"
         >
           {checked && "X"}
         </span>

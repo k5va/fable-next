@@ -33,7 +33,7 @@ export const CarouselTab = ({
           role="presentation"
           aria-hidden
           className={classNames(
-            "absolute top-1/2 block h-[2px] w-full rounded bg-black opacity-10",
+            "absolute top-1/2 block h-[2px] w-full rounded bg-primary opacity-10",
             { "opacity-100": checked }
           )}
         ></span>
