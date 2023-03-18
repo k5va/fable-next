@@ -1,4 +1,6 @@
 import { z } from "zod";
+import { categorySchema } from "./category.schema";
+import { collectionSchema } from "./collection.schema";
 import { imageSchema } from "./image.schema";
 
 export const productSchema = z.object({
@@ -10,6 +12,8 @@ export const productSchema = z.object({
   images: z.array(imageSchema),
   details: z.string(),
   collectionId: z.string(),
+  collection: collectionSchema.optional(),
   categoryId: z.string(),
+  category: categorySchema.optional(),
   registerDate: z.string(),
 });

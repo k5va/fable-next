@@ -1,3 +1,4 @@
+import { createContext } from "react";
 import { GetServerSideProps, NextPage } from "next";
 import Head from "next/head";
 import { ErrorBoundary } from "react-error-boundary";
@@ -10,18 +11,32 @@ import {
   ProductOrderSummary,
   PromocodeForm,
   OrderForm,
+  Spinner,
 } from "~/components";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
+import { useLoadCartProducts } from "~/hooks";
+import { Product } from "~/types";
+
+type OrderContextType = {
+  products: Product[];
+};
+export const OrderContext = createContext<OrderContextType>({ products: [] });
 
 const Order: NextPage = () => {
+  const { data: products = [], isLoading } = useLoadCartProducts(); // TODO: move to separate component inside error boundary
+
+  if (isLoading) {
+    return <Spinner />;
+  }
+
   return (
-    <>
+    <OrderContext.Provider value={{ products }}>
       <Head>
         <title>Fable store</title>
         <meta name="description" content="Fable store" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      {/* TODO: Nprmilize? box-sizing: border-box;? */}
+      {/* TODO: Normalize? box-sizing: border-box;? */}
       <div className="grid min-h-screen grid-rows-[auto,1fr,auto]">
         <Header />
         <main>
@@ -65,7 +80,7 @@ const Order: NextPage = () => {
         </main>
         <Footer />
       </div>
-    </>
+    </OrderContext.Provider>
   );
 };
 

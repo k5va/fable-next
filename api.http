@@ -3,6 +3,11 @@ GET http://localhost:3000/api/product HTTP/1.1
 
 ###
 
+# Get products filtered by ids
+GET http://localhost:3000/api/product?ids=1,2 HTTP/1.1
+
+###
+
 # Get some product
 GET http://localhost:3000/api/product/1 HTTP/1.1
 
@@ -25,5 +30,31 @@ GET http://localhost:3000/api/collection HTTP/1.1
 
 # Get some collection
 GET http://localhost:3000/api/collection/1 HTTP/1.1
+
+###
+
+# Get all orders
+GET http://localhost:3000/api/order HTTP/1.1
+
+###
+
+# Create order
+POST http://localhost:3000/api/order HTTP/1.1
+Content-Type: application/json
+
+[
+  {
+    "productId": "3",
+    "size": "XL",
+    "color": "black",
+    "count": "5"
+  },
+  {
+    "productId": "3",
+    "size": "XS",
+    "color": "red",
+    "count": 4
+  }
+]
 
 ###

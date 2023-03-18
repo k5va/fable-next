@@ -4,14 +4,20 @@ import Image from "next/image";
 import { useTranslation } from "next-i18next";
 import { BiPlus, BiMinus } from "react-icons/bi";
 import { ProductOrderProps } from "./types";
-import { useLoadCollectionById, useProductOrders } from "~/hooks";
+import { useProductOrders } from "~/hooks";
+import { Spinner } from "~/components";
+import { useGetProductFromContext } from "./hooks/use-get-product-from-context";
 
 export function ProductOrder({ order }: ProductOrderProps): JSX.Element {
+  const { productId, size, color, count } = order;
   const { removeProduct, incrementProduct, decrementProduct } =
     useProductOrders();
-  const { product, size, color, count } = order;
-  const { data: collection } = useLoadCollectionById(product.collectionId);
+  const product = useGetProductFromContext(productId);
   const { t } = useTranslation();
+
+  if (!product) {
+    return <Spinner />;
+  }
 
   return (
     <div
@@ -20,7 +26,7 @@ export function ProductOrder({ order }: ProductOrderProps): JSX.Element {
         small:grid-cols-1"
     >
       <div className="col-span-1">
-        <Link href={`/product/${product.id}`}>
+        <Link href={`/product/${productId}`}>
           <Image
             width="183"
             height="203"
@@ -37,7 +43,7 @@ export function ProductOrder({ order }: ProductOrderProps): JSX.Element {
       >
         <p className="col-span-3 mb-2 text-base font-medium">{product.name}</p>
         <p className="col-span-3 mb-2">
-          {t("product.collection")}: {collection?.name}
+          {t("product.collection")}: {product.collection?.name}
         </p>
         <p className="col-span-3">
           {t("product.article")}: {product.article}

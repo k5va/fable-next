@@ -7,7 +7,7 @@ export const useAddToCart = (productId: string) => {
   // TODO: useCallback?
   const isAddedToCart = Boolean(
     useOrders((state) => {
-      return state.orders.find(({ product }) => product.id === productId);
+      return state.orders.find((product) => product.productId === productId);
     })
   );
 

@@ -1,8 +1,4 @@
-import { Product } from './product.type';
+import { z } from "zod";
+import { productOrderSchema } from "~/schema";
 
-export type ProductOrder = {
-  product: Product;
-  size: string;
-  color: string;
-  count: number;
-};
+export type ProductOrder = z.infer<typeof productOrderSchema>;

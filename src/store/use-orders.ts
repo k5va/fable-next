@@ -12,6 +12,7 @@ type Actions = {
   removeOrder: (productId: string) => void;
   incrementProductCount: (productId: string) => void;
   decrementProductCount: (productId: string) => void;
+  removeAll: () => void;
 };
 
 // TODO: try persist middleware
@@ -28,13 +29,13 @@ export const useOrders = create(
       removeOrder: (productId: string) =>
         set((state) => {
           state.orders = state.orders.filter(
-            ({ product }) => product.id !== productId
+            (product) => product.productId !== productId
           );
         }),
       incrementProductCount: (productId: string) =>
         set((state) => {
           const order = state.orders.find(
-            ({ product }) => product.id === productId
+            (product) => product.productId === productId
           );
           if (order) {
             order.count++;
@@ -43,11 +44,15 @@ export const useOrders = create(
       decrementProductCount: (productId: string) =>
         set((state) => {
           const order = state.orders.find(
-            ({ product }) => product.id === productId
+            (product) => product.productId === productId
           );
           if (order && order.count > 1) {
             order.count--;
           }
+        }),
+      removeAll: () =>
+        set((state) => {
+          state.orders = [];
         }),
     }))
   )

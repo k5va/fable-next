@@ -5,4 +5,5 @@ export const ApiRoute = {
   PRODUCT: "product",
   CATEGORY: "category",
   COLLECTION: "collection",
+  ORDER: "order",
 } as const;
