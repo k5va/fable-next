@@ -1,18 +1,18 @@
 import { useOrders } from "~/store";
-import { OrderFormFields } from "../components/order-form/types";
+import { Order } from "~/types";
 import { useCreateOrder } from "./use-create-order";
 
 export const useSubmitOrder = () => {
   const orders = useOrders((state) => state.orders);
   const { create } = useCreateOrder();
 
-  return (formData: OrderFormFields) => {
-    const fullOrder = {
+  return (formData: Order) => {
+    const fullOrder: Order = {
       ...formData,
-      orders,
+      productOrders: orders,
     };
 
     console.log(fullOrder);
-    create(orders);
+    create(fullOrder);
   };
 };

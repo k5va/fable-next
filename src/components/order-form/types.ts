@@ -1,10 +1,7 @@
-import { RegisterOptions } from 'react-hook-form';
-import { orderFormSchema } from './order-form.schema';
-import { z } from 'zod';
-
-export type OrderFormFields = z.infer<typeof orderFormSchema>;
+import { RegisterOptions } from "react-hook-form";
+import { Order } from "~/types";
 
 export type OrderFormValidator = Pick<
-  RegisterOptions<OrderFormFields>,
-  'required' | 'maxLength' | 'minLength' | 'pattern'
+  RegisterOptions<Order>,
+  "required" | "maxLength" | "minLength" | "pattern"
 >;

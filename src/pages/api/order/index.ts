@@ -1,7 +1,7 @@
 import { type NextApiRequest, type NextApiResponse } from "next";
 import { prisma } from "~/server/db";
 import { StatusCodes } from "http-status-codes";
-import { productOrderSchema } from "~/schema/product-order.schema";
+import { orderSchema } from "~/schema";
 import { ZodError } from "zod";
 
 export default async function handler(
@@ -36,9 +36,12 @@ const handleGet = async (_: NextApiRequest, res: NextApiResponse) => {
 
 const handlePost = async (req: NextApiRequest, res: NextApiResponse) => {
   try {
-    const productOrders = await productOrderSchema.array().parseAsync(req.body);
+    const { productOrders, ...orderData } = await orderSchema.parseAsync(
+      req.body
+    );
     const order = await prisma.order.create({
       data: {
+        ...orderData,
         productOrders: {
           createMany: {
             data: productOrders,
