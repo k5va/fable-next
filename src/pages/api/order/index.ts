@@ -1,8 +1,7 @@
 import { type NextApiRequest, type NextApiResponse } from "next";
-import { prisma } from "~/server/db";
 import { StatusCodes } from "http-status-codes";
 import { orderSchema } from "~/schema";
-import { ZodError } from "zod";
+import { handleServerError, prisma } from "~/server";
 
 export default async function handler(
   req: NextApiRequest,
@@ -29,8 +28,7 @@ const handleGet = async (_: NextApiRequest, res: NextApiResponse) => {
 
     return res.status(StatusCodes.OK).json(orders);
   } catch (error) {
-    console.log(error);
-    return res.status(StatusCodes.INTERNAL_SERVER_ERROR).end();
+    handleServerError(error, res);
   }
 };
 
@@ -55,12 +53,6 @@ const handlePost = async (req: NextApiRequest, res: NextApiResponse) => {
 
     return res.status(StatusCodes.OK).json(order);
   } catch (error) {
-    console.log(error);
-
-    if (error instanceof ZodError) {
-      return res.status(StatusCodes.BAD_REQUEST).json(error.issues);
-    }
-
-    return res.status(StatusCodes.INTERNAL_SERVER_ERROR).end();
+    handleServerError(error, res);
   }
 };
