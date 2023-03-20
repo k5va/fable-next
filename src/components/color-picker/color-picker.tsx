@@ -39,7 +39,7 @@ export function ColorPicker({
             className={classNames(
               "block h-10 w-10 cursor-pointer",
               "small:h-5 small:w-5",
-              { "border-2 border-solid border-black": color === selected }
+              { "border-2 border-solid border-primary": color === selected }
             )}
             htmlFor={color}
             style={{ backgroundColor: color }}

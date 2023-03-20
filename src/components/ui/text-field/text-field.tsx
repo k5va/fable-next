@@ -11,9 +11,10 @@ const textFieldStyles = cva(
   {
     variants: {
       intent: {
-        primary: "border-black shadow-black bg-white text-black",
-        secondary: "border-white shadow-white bg-black text-white",
-        error: "border-red-500 shadow-red-500 bg-white text-red-500",
+        primary: "border-primary shadow-primary bg-secondary text-primary",
+        secondary:
+          "border-secondary shadow-secondary bg-primary text-secondary",
+        error: "border-alert shadow-alert bg-secondary text-alert",
       },
     },
     defaultVariants: {
@@ -52,7 +53,7 @@ export const TextField = forwardRef(function TextField(
         {...inputProps}
       />
       {error && (
-        <p id={errorId} className="text-xs text-red-500" role="alert">
+        <p id={errorId} className="text-xs text-alert" role="alert">
           {error}
         </p>
       )}

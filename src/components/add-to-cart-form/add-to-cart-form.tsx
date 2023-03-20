@@ -23,7 +23,7 @@ export function AddToCartForm({ product }: AddToCartFormProps) {
   const handleSubmit: FormEventHandler<HTMLFormElement> = (e) => {
     e.preventDefault();
     addProductToOrder({
-      product,
+      productId,
       size,
       color,
       count: DEFAULT_PRODUCT_ORDER_COUNT,

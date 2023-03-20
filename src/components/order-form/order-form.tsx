@@ -7,15 +7,15 @@ import {
   TextArea,
   TextField,
 } from "~/components";
-import { OrderFormFields } from "./types";
 import { useSubmitOrder } from "~/hooks";
 import { useOrderFormError } from "./hooks/use-order-form-error";
 import { useTranslation } from "next-i18next";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { orderFormSchema } from "./order-form.schema";
+import { orderSchema } from "~/schema";
 import { Legend } from "./ui/legend";
+import { Order } from "~/types";
 
-const orderFormDefaults: OrderFormFields = {
+const orderFormDefaults: Order = {
   city: "",
   delivery: "toDoor",
   address: "",
@@ -25,14 +25,15 @@ const orderFormDefaults: OrderFormFields = {
   email: "",
   payment: "card",
   comment: "",
+  productOrders: [],
 };
 
 export function OrderForm(): JSX.Element {
   const [isAgreeOnTerms, setAgreeOnTerms] = useState(false);
   const { t } = useTranslation();
-  const methods = useForm<OrderFormFields>({
+  const methods = useForm<Order>({
     defaultValues: orderFormDefaults,
-    resolver: zodResolver(orderFormSchema),
+    resolver: zodResolver(orderSchema),
   });
   const {
     register,

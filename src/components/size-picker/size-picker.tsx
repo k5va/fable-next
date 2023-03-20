@@ -38,7 +38,7 @@ export function SizePicker({
               "flex h-12 w-12 cursor-pointer items-center justify-center border-2 border-solid border-[#f1f1ef] text-xl font-normal",
               "small:h-10 small:w-10",
               {
-                "border-2 border-solid border-black": size === selected,
+                "border-2 border-solid border-primary": size === selected,
               }
             )}
             htmlFor={size}

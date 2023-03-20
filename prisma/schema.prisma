@@ -88,6 +88,7 @@ model Product {
     collectionId    String
     category        Category @relation(fields: [categoryId], references: [id])
     categoryId      String
+    productOrders   ProductOrder[]
     registerDate    DateTime
     createdAt       DateTime @default(now())
     updatedAt       DateTime @updatedAt
@@ -106,3 +107,33 @@ model ProductGalleryImage {
     product         Product @relation(fields: [productId], references: [id])
     productId       String
 }
+
+model Order {
+    id              String   @id @default(cuid())
+    city            String
+    delivery        String
+    address         String
+    loyaltyCard     String?
+    name            String
+    phone           String
+    email           String
+    payment         String
+    comment         String?
+    productOrders   ProductOrder[]
+    createdAt       DateTime @default(now())
+    updatedAt       DateTime @updatedAt
+}
+
+model ProductOrder {
+    id              String   @id @default(cuid())
+    order           Order @relation(fields: [orderId], references: [id])
+    orderId         String
+    product         Product @relation(fields: [productId], references: [id])
+    productId       String
+    size            String
+    color           String
+    count           Int
+    createdAt       DateTime @default(now())
+    updatedAt       DateTime @updatedAt
+}
+
