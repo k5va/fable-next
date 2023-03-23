@@ -9,3 +9,5 @@ export * from "./product-color.type";
 export * from "./product-size.type";
 export * from "./image.type";
 export * from "./order.type";
+export * from "./create-order.type";
+export * from "./create-product-order.type";

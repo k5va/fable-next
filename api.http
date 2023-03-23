@@ -33,7 +33,7 @@ GET http://localhost:3000/api/collection/1 HTTP/1.1
 
 ###
 
-# Get all orders
+# Get user orders
 GET http://localhost:3000/api/order HTTP/1.1
 
 ###

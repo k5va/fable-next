@@ -1,14 +1,14 @@
 import { create } from "zustand";
 import { immer } from "zustand/middleware/immer";
 import { devtools } from "zustand/middleware";
-import { ProductOrder } from "~/types";
+import { CreateProductOrder } from "~/types";
 
 type State = {
-  orders: ProductOrder[];
+  orders: CreateProductOrder[];
 };
 
 type Actions = {
-  addOrder: (order: ProductOrder) => void;
+  addOrder: (order: CreateProductOrder) => void;
   removeOrder: (productId: string) => void;
   incrementProductCount: (productId: string) => void;
   decrementProductCount: (productId: string) => void;
@@ -22,7 +22,7 @@ export const useOrders = create(
     // Support redux devtools
     immer<State & Actions>((set) => ({
       orders: [],
-      addOrder: (order: ProductOrder) =>
+      addOrder: (order: CreateProductOrder) =>
         set((state) => {
           state.orders.push(order);
         }),
