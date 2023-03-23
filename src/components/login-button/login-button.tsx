@@ -1,27 +1,28 @@
 import { useSession, signIn, signOut } from "next-auth/react";
+import { BiLogIn, BiLogOut } from "react-icons/bi";
 
 export function LoginButton(): JSX.Element {
   const { data: session } = useSession();
 
-  if (session) {
-    return (
-      <>
-        Signed in as {session.user.email}
-        <button
-          className="rounded-full bg-orange-500 px-2 text-white"
-          onClick={() => void signOut()}
-        >
-          Sign out
-        </button>
-      </>
-    );
-  }
+  const onLoginClick = async () => {
+    if (session) {
+      return await signOut();
+    }
+    return await signIn();
+  };
+
   return (
     <button
-      className="rounded-full bg-orange-500 px-2 text-white"
-      onClick={() => void signIn()}
+      className="flex items-center gap-1 transition hover:-translate-y-[1px] hover:scale-110"
+      onClick={onLoginClick}
     >
-      Sign in
+      {session ? (
+        <>
+          {session.user.email} <BiLogOut className="text-2xl" />
+        </>
+      ) : (
+        <BiLogIn className="text-2xl" />
+      )}
     </button>
   );
 }

@@ -1,5 +1,11 @@
 import React from "react";
-import { Logo, CatalogMenu, CartLink, ChangeLanguage } from "../../components";
+import {
+  Logo,
+  CatalogMenu,
+  CartLink,
+  ChangeLanguage,
+  LoginButton,
+} from "~/components";
 
 export function MainNavigation(): JSX.Element {
   return (
@@ -9,6 +15,7 @@ export function MainNavigation(): JSX.Element {
       </div>
       <CatalogMenu />
       <div className="flex gap-9">
+        <LoginButton />
         <CartLink />
         <ChangeLanguage />
       </div>

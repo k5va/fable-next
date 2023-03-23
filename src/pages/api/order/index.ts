@@ -1,7 +1,7 @@
 import { type NextApiRequest, type NextApiResponse } from "next";
 import { StatusCodes } from "http-status-codes";
-import { orderSchema } from "~/schema";
-import { handleServerError, prisma } from "~/server";
+import { createOrderSchema } from "~/schema";
+import { getCurrentUser, handleServerError, prisma } from "~/server";
 
 export default async function handler(
   req: NextApiRequest,
@@ -18,11 +18,24 @@ export default async function handler(
   return res.status(StatusCodes.METHOD_NOT_ALLOWED).end();
 }
 
-const handleGet = async (_: NextApiRequest, res: NextApiResponse) => {
+const handleGet = async (req: NextApiRequest, res: NextApiResponse) => {
   try {
+    const { email } = await getCurrentUser(req, res);
     const orders = await prisma.order.findMany({
+      where: {
+        email,
+      },
       include: {
-        productOrders: true,
+        productOrders: {
+          include: {
+            product: {
+              include: {
+                image: true,
+                images: true,
+              },
+            },
+          },
+        },
       },
     });
 
@@ -34,7 +47,7 @@ const handleGet = async (_: NextApiRequest, res: NextApiResponse) => {
 
 const handlePost = async (req: NextApiRequest, res: NextApiResponse) => {
   try {
-    const { productOrders, ...orderData } = await orderSchema.parseAsync(
+    const { productOrders, ...orderData } = await createOrderSchema.parseAsync(
       req.body
     );
     const order = await prisma.order.create({
@@ -47,7 +60,16 @@ const handlePost = async (req: NextApiRequest, res: NextApiResponse) => {
         },
       },
       include: {
-        productOrders: true,
+        productOrders: {
+          include: {
+            product: {
+              include: {
+                image: true,
+                images: true,
+              },
+            },
+          },
+        },
       },
     });
 

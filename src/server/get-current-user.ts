@@ -25,5 +25,5 @@ export const getCurrentUser = async (
     throw new ServerError("User not found", StatusCodes.UNAUTHORIZED);
   }
 
-  return user;
+  return { ...user, email: session.user.email };
 };
