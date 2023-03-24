@@ -10,7 +10,8 @@
     "start": "next start",
     "db-seed": "NODE_ENV=development prisma db seed",
     "storybook": "storybook dev -p 6006",
-    "build-storybook": "storybook build"
+    "build-storybook": "storybook build",
+    "prisma-studio": "npx prisma studio"
   },
   "prisma": {
     "seed": "npx tsx prisma/seed.ts"
