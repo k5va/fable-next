@@ -7,6 +7,7 @@ import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import { getServerSession } from "next-auth";
 import { authOptions } from "~/server";
 import { useLoadOrders } from "~/hooks";
+import { AppRoute } from "~/const";
 
 const Home: NextPage = () => {
   const { t } = useTranslation();
@@ -62,7 +63,7 @@ export const getServerSideProps: GetServerSideProps = async ({
   if (!session) {
     return {
       redirect: {
-        destination: "/login",
+        destination: AppRoute.ROOT,
         permanent: false,
       },
       props: {},

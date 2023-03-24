@@ -36,3 +36,4 @@ export * from "./container/container";
 export * from "./ui/button/button";
 export * from "./ui/tabs/tab";
 export * from "./ui/tabs/tab-group";
+export * from "./personal-menu/personal-menu";

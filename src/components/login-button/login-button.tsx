@@ -17,9 +17,7 @@ export function LoginButton(): JSX.Element {
       onClick={onLoginClick}
     >
       {session ? (
-        <>
-          {session.user.email} <BiLogOut className="text-2xl" />
-        </>
+        <BiLogOut className="text-2xl" />
       ) : (
         <BiLogIn className="text-2xl" />
       )}

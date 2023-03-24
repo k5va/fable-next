@@ -5,6 +5,7 @@ import {
   CartLink,
   ChangeLanguage,
   LoginButton,
+  PersonalMenu,
 } from "~/components";
 
 export function MainNavigation(): JSX.Element {
@@ -15,6 +16,7 @@ export function MainNavigation(): JSX.Element {
       </div>
       <CatalogMenu />
       <div className="flex gap-9">
+        <PersonalMenu />
         <LoginButton />
         <CartLink />
         <ChangeLanguage />
