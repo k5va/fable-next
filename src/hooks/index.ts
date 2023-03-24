@@ -12,3 +12,4 @@ export * from "./use-product-orders";
 export * from "./use-submit-order";
 export * from "./use-load-cart-products";
 export * from "./use-create-order";
+export * from "./use-load-orders";

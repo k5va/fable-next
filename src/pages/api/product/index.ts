@@ -1,7 +1,7 @@
 import { type NextApiRequest, type NextApiResponse } from "next";
-import { prisma } from "~/server/db";
 import { StatusCodes } from "http-status-codes";
-import { z, ZodError } from "zod";
+import { z } from "zod";
+import { handleServerError, prisma } from "~/server";
 
 const queryIdsSchema = z.string().optional();
 
@@ -30,13 +30,7 @@ export default async function handler(
 
       return res.status(StatusCodes.OK).json(products);
     } catch (error) {
-      console.log(error);
-
-      if (error instanceof ZodError) {
-        return res.status(StatusCodes.BAD_REQUEST).end();
-      }
-
-      return res.status(StatusCodes.INTERNAL_SERVER_ERROR).end();
+      handleServerError(error, res);
     }
   }
 

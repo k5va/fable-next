@@ -1,3 +1,4 @@
-import { ProductSorting } from '../const';
+import { ProductSorting } from "~/const";
 
-export type ProductSortingType = typeof ProductSorting[keyof typeof ProductSorting];
+export type ProductSortingType =
+  (typeof ProductSorting)[keyof typeof ProductSorting];

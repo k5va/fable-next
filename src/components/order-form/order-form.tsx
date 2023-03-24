@@ -11,11 +11,11 @@ import { useSubmitOrder } from "~/hooks";
 import { useOrderFormError } from "./hooks/use-order-form-error";
 import { useTranslation } from "next-i18next";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { orderSchema } from "~/schema";
 import { Legend } from "./ui/legend";
-import { Order } from "~/types";
+import { CreateOrder } from "~/types";
+import { createOrderSchema } from "~/schema";
 
-const orderFormDefaults: Order = {
+const orderFormDefaults: CreateOrder = {
   city: "",
   delivery: "toDoor",
   address: "",
@@ -31,9 +31,9 @@ const orderFormDefaults: Order = {
 export function OrderForm(): JSX.Element {
   const [isAgreeOnTerms, setAgreeOnTerms] = useState(false);
   const { t } = useTranslation();
-  const methods = useForm<Order>({
+  const methods = useForm<CreateOrder>({
     defaultValues: orderFormDefaults,
-    resolver: zodResolver(orderSchema),
+    resolver: zodResolver(createOrderSchema),
   });
   const {
     register,
