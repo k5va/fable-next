@@ -2,7 +2,13 @@ import { GetServerSideProps, NextPage } from "next";
 import Head from "next/head";
 import { ErrorBoundary } from "react-error-boundary";
 import { useTranslation } from "next-i18next";
-import { Container, ErrorFallback, Footer, Header } from "~/components";
+import {
+  Container,
+  ErrorFallback,
+  Footer,
+  Header,
+  ProductOrder,
+} from "~/components";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import { getServerSession } from "next-auth";
 import { authOptions } from "~/server";
@@ -22,23 +28,22 @@ const Home: NextPage = () => {
       </Head>
       <Header />
       <main>
-        <h1 className="sr-only">{t("fable")}</h1>
         <ErrorBoundary FallbackComponent={ErrorFallback}>
           <Container>
-            <ul>
-              {orders.map(({ id, email, productOrders }) => (
-                <li key={id} className="grid grid-cols-2">
+            <h1 className="mb-3 text-center text-2xl font-medium">
+              Мои заказы
+            </h1>
+            <ul className="flex flex-col gap-4">
+              {orders.map(({ id, createdAt, email, productOrders }) => (
+                <li key={id} className="grid grid-cols-2 gap-2">
                   <div>
-                    <p>{id}</p>
+                    <p>{createdAt}</p>
                     <p>{email}</p>
                   </div>
-                  <ul>
-                    {productOrders.map(({ product, color, size, count }) => (
-                      <li key={product.id}>
-                        <p>{product.name}</p>
-                        <p>{color}</p>
-                        <p>{size}</p>
-                        <p>{count}</p>
+                  <ul className="flex flex-col gap-2">
+                    {productOrders.map((productOrder) => (
+                      <li key={productOrder.productId}>
+                        <ProductOrder productOrder={productOrder} readonly />
                       </li>
                     ))}
                   </ul>

@@ -14,23 +14,25 @@ import {
   Spinner,
 } from "~/components";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
-import { useLoadCartProducts } from "~/hooks";
-import { Product } from "~/types";
+import { ProductOrder } from "~/types";
+import { useEnrichedProductOrders } from "./use-enriched-product-orders";
 
 type OrderContextType = {
-  products: Product[];
+  productOrders: ProductOrder[];
 };
-export const OrderContext = createContext<OrderContextType>({ products: [] });
+export const OrderContext = createContext<OrderContextType>({
+  productOrders: [],
+});
 
 const Order: NextPage = () => {
-  const { data: products = [], isLoading } = useLoadCartProducts(); // TODO: move to separate component inside error boundary
+  const { data: productOrders = [], isLoading } = useEnrichedProductOrders(); // TODO: move to separate component inside error boundary
 
   if (isLoading) {
     return <Spinner />;
   }
 
   return (
-    <OrderContext.Provider value={{ products }}>
+    <OrderContext.Provider value={{ productOrders }}>
       <Head>
         <title>Fable store</title>
         <meta name="description" content="Fable store" />

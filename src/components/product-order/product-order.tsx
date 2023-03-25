@@ -3,21 +3,23 @@ import Link from "next/link";
 import Image from "next/image";
 import { useTranslation } from "next-i18next";
 import { BiPlus, BiMinus } from "react-icons/bi";
-import { ProductOrderProps } from "./types";
 import { useProductOrders } from "~/hooks";
-import { Spinner } from "~/components";
-import { useGetProductFromContext } from "./hooks/use-get-product-from-context";
+import type { ProductOrder } from "~/types";
+import classNames from "classnames";
 
-export function ProductOrder({ order }: ProductOrderProps): JSX.Element {
-  const { productId, size, color, count } = order;
+type ProductOrderProps = {
+  productOrder: ProductOrder;
+  readonly?: boolean;
+};
+
+export function ProductOrder({
+  productOrder,
+  readonly = false,
+}: ProductOrderProps): JSX.Element {
+  const { product, size, color, count } = productOrder;
   const { removeProduct, incrementProduct, decrementProduct } =
     useProductOrders();
-  const product = useGetProductFromContext(productId);
   const { t } = useTranslation();
-
-  if (!product) {
-    return <Spinner />;
-  }
 
   return (
     <div
@@ -26,7 +28,7 @@ export function ProductOrder({ order }: ProductOrderProps): JSX.Element {
         small:grid-cols-1"
     >
       <div className="col-span-1">
-        <Link href={`/product/${productId}`}>
+        <Link href={`/product/${product.id}`}>
           <Image
             width="183"
             height="203"
@@ -68,7 +70,10 @@ export function ProductOrder({ order }: ProductOrderProps): JSX.Element {
           {t("product.quantity")}:
           <div className="flex flex-nowrap gap-2">
             <button
-              className="transition hover:-translate-y-[1px] hover:scale-110"
+              className={classNames(
+                "transition hover:-translate-y-[1px] hover:scale-110",
+                { hidden: readonly }
+              )}
               type="button"
               aria-label="Decrement product"
               onClick={() => decrementProduct(product.id)}
@@ -77,7 +82,10 @@ export function ProductOrder({ order }: ProductOrderProps): JSX.Element {
             </button>
             {count}
             <button
-              className="transition hover:-translate-y-[1px] hover:scale-110"
+              className={classNames(
+                "transition hover:-translate-y-[1px] hover:scale-110",
+                { hidden: readonly }
+              )}
               type="button"
               aria-label="Increment product"
               onClick={() => incrementProduct(product.id)}
@@ -97,9 +105,10 @@ export function ProductOrder({ order }: ProductOrderProps): JSX.Element {
           </span>
         </p>
         <button
-          className="
-            col-span-1 justify-self-end transition hover:-translate-y-[1px] hover:scale-110
-            small:col-start-3"
+          className={classNames(
+            "col-span-1 justify-self-end transition hover:-translate-y-[1px] hover:scale-110 small:col-start-3",
+            { hidden: readonly }
+          )}
           type="button"
           onClick={() => removeProduct(product.id)}
         >
