@@ -13,7 +13,6 @@ export * from "./subcribe/subscribe";
 export * from "./socials/socials";
 export * from "./category-products/category-products";
 export * from "./collection-products/collection-products";
-export * from "./sorting-select/sorting-select";
 export * from "./error-fallback/error-fallback";
 export * from "./images-carousel/images-carousel";
 export * from "./add-to-cart-form/add-to-cart-form";
