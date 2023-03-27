@@ -9,7 +9,10 @@ export function Logo(): JSX.Element {
 
   return (
     <Link href={AppRoute.ROOT}>
-      <LogoSVG title={t("fable") || "Fable store"} />
+      <LogoSVG
+        title={t("fable") || "Fable store"}
+        className="hover:animate-scale"
+      />
     </Link>
   );
 }

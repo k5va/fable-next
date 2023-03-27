@@ -12,12 +12,9 @@ export const Tab = ({ label, children }: TabProps): JSX.Element => {
   return (
     <>
       <label
-        className={classNames(
-          "cursor-pointer text-xl transition hover:-translate-y-[1px] hover:scale-110",
-          {
-            "opacity-30": !selected,
-          }
-        )}
+        className={classNames("cursor-pointer text-xl hover:animate-scale", {
+          "opacity-30": !selected,
+        })}
       >
         <input
           className="hidden"

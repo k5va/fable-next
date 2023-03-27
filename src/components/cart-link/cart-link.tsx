@@ -9,7 +9,10 @@ export function CartLink(): JSX.Element {
 
   return (
     <Link
-      className="flex items-center gap-1 transition hover:-translate-y-[1px] hover:scale-110"
+      className="
+        flex items-center gap-1 
+        hover:animate-scale
+      "
       href={AppRoute.ORDER}
     >
       {ordersCount > 0 ? (

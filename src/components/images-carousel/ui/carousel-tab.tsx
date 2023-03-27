@@ -26,7 +26,7 @@ export const CarouselTab = ({
         }}
       />
       <label
-        className="relative block h-full cursor-pointer transition hover:-translate-y-1 hover:scale-110"
+        className="relative block h-full cursor-pointer hover:animate-scale"
         htmlFor={inputId}
       >
         <span

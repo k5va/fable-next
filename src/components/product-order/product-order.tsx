@@ -70,10 +70,9 @@ export function ProductOrder({
           {t("product.quantity")}:
           <div className="flex flex-nowrap gap-2">
             <button
-              className={classNames(
-                "transition hover:-translate-y-[1px] hover:scale-110",
-                { hidden: readonly }
-              )}
+              className={classNames("hover:animate-scale", {
+                hidden: readonly,
+              })}
               type="button"
               aria-label="Decrement product"
               onClick={() => decrementProduct(product.id)}
@@ -82,10 +81,9 @@ export function ProductOrder({
             </button>
             {count}
             <button
-              className={classNames(
-                "transition hover:-translate-y-[1px] hover:scale-110",
-                { hidden: readonly }
-              )}
+              className={classNames("hover:animate-scale", {
+                hidden: readonly,
+              })}
               type="button"
               aria-label="Increment product"
               onClick={() => incrementProduct(product.id)}
@@ -106,7 +104,7 @@ export function ProductOrder({
         </p>
         <button
           className={classNames(
-            "col-span-1 justify-self-end transition hover:-translate-y-[1px] hover:scale-110 small:col-start-3",
+            "col-span-1 justify-self-end hover:animate-scale small:col-start-3",
             { hidden: readonly }
           )}
           type="button"

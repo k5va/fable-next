@@ -30,7 +30,7 @@ export function SortingSelect(): JSX.Element {
           </Select.Icon>
         </Select.Trigger>
         <Select.Portal>
-          <Select.Content className="min-w-[120px] rounded-md bg-slate-50 p-1">
+          <Select.Content className="min-w-[120px] rounded-md bg-slate-50 p-1 data-[state=open]:animate-fadeIn data-[state=closed]:animate-fadeOut">
             <Select.Viewport>
               {productSortingList.map((value) => (
                 <Select.Item
