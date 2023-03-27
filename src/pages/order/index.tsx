@@ -15,7 +15,7 @@ import {
 } from "~/components";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import { ProductOrder } from "~/types";
-import { useEnrichedProductOrders } from "./use-enriched-product-orders";
+import { useEnrichedProductOrders } from "./hooks/use-enriched-product-orders";
 
 type OrderContextType = {
   productOrders: ProductOrder[];
