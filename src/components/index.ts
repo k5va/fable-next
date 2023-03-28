@@ -39,3 +39,4 @@ export * from "./personal-menu/personal-menu";
 export * from "./order-list/order-list";
 export * from "./order-data/order-data";
 export * from "./ui/dropdown/dropdown";
+export * from "./ui/select/select";
