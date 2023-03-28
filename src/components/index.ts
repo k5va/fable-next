@@ -38,3 +38,4 @@ export * from "./ui/tabs/tab-group";
 export * from "./personal-menu/personal-menu";
 export * from "./order-list/order-list";
 export * from "./order-data/order-data";
+export * from "./ui/dropdown/dropdown";
