@@ -1,18 +1,18 @@
-import React, { useContext } from "react";
-import { ProductPageContext } from "~/pages/product/[id]";
+import React from "react";
+import { Product } from "~/types";
 
-export function ProductBreadcrumbs(): JSX.Element {
-  const { collection, category } = useContext(ProductPageContext);
+type ProductBreadcrumbsProps = {
+  product: Product;
+};
 
+export function ProductBreadcrumbs({
+  product,
+}: ProductBreadcrumbsProps): JSX.Element {
   return (
-    <>
-      {collection && category && (
-        <p className="flex flex-nowrap gap-4 text-xs">
-          <span>{collection.name}</span>
-          <span>—</span>
-          <span>{category.name}</span>
-        </p>
-      )}
-    </>
+    <div className="flex flex-nowrap gap-4 text-xs">
+      <p>{product.collection?.name}</p>
+      <span>—</span>
+      <p>{product.category?.name}</p>
+    </div>
   );
 }

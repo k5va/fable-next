@@ -1,17 +1,19 @@
-import React from "react";
+import React, { useContext } from "react";
 import { ProductOrder } from "~/components";
-import { useProductOrders } from "~/hooks";
+import { OrderContext } from "~/pages/order";
 
 export function ProductOrderList(): JSX.Element {
-  const { orders } = useProductOrders();
+  const { productOrders } = useContext(OrderContext);
 
   return (
     <ul className="flex flex-col flex-nowrap gap-5">
-      {orders.map((order) => (
-        <li key={order.productId}>
-          <ProductOrder order={order} />
-        </li>
-      ))}
+      {productOrders.map((productOrder) => {
+        return (
+          <li key={productOrder.productId}>
+            <ProductOrder productOrder={productOrder} />
+          </li>
+        );
+      })}
     </ul>
   );
 }

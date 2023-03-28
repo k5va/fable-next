@@ -31,10 +31,7 @@ export function CatalogMenu(): JSX.Element {
         )}
       >
         {menuRoutes.map(({ link, text }, index) => (
-          <li
-            className="transition hover:-translate-y-[1px] hover:scale-110"
-            key={index}
-          >
+          <li className="hover:animate-scale" key={index}>
             <Link href={link}>{t(text)}</Link>
           </li>
         ))}

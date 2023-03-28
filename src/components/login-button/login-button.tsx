@@ -13,7 +13,7 @@ export function LoginButton(): JSX.Element {
 
   return (
     <button
-      className="flex items-center gap-1 transition hover:-translate-y-[1px] hover:scale-110"
+      className="flex items-center gap-1 hover:animate-scale"
       onClick={onLoginClick}
     >
       {session ? (

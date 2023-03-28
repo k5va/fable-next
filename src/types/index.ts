@@ -11,3 +11,4 @@ export * from "./image.type";
 export * from "./order.type";
 export * from "./create-order.type";
 export * from "./create-product-order.type";
+export * from "./sort.type";

@@ -1,10 +1,12 @@
 import { orderSchema } from "~/schema";
-import { CreateOrder, Order } from "~/types";
+import { CreateOrder, Order, Sorting } from "~/types";
 import { ApiRoute, BACKEND_URL } from "./api.const";
 import axios from "axios";
 
-export async function fetchOrders(): Promise<Order[]> {
-  const { data } = await axios.get<Order[]>(`${BACKEND_URL}/${ApiRoute.ORDER}`);
+export async function fetchOrders(sort: Sorting = "desc"): Promise<Order[]> {
+  const { data } = await axios.get<Order[]>(
+    `${BACKEND_URL}/${ApiRoute.ORDER}?sort=${sort}`
+  );
 
   return orderSchema.array().parseAsync(data);
 }

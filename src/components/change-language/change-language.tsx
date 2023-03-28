@@ -9,7 +9,7 @@ export function ChangeLanguage(): JSX.Element {
     <button
       className="
           flex cursor-pointer border-none bg-transparent font-medium uppercase 
-          transition hover:-translate-y-[1px] hover:scale-110"
+          hover:animate-scale"
       onClick={() =>
         i18n.changeLanguage(
           i18n.language === AppLanguage.ENG ? AppLanguage.RUS : AppLanguage.ENG

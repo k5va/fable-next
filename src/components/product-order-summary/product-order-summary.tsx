@@ -1,6 +1,6 @@
 import React from "react";
 import { useTranslation } from "next-i18next";
-import { useProductOrderSummary } from "../../hooks";
+import { useProductOrderSummary } from "./hooks/use-product-order-summary";
 
 export function ProductOrderSummary(): JSX.Element {
   const { t } = useTranslation();

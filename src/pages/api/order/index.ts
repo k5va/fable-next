@@ -2,6 +2,7 @@ import { type NextApiRequest, type NextApiResponse } from "next";
 import { StatusCodes } from "http-status-codes";
 import { createOrderSchema } from "~/schema";
 import { getCurrentUser, handleServerError, prisma } from "~/server";
+import { z } from "zod";
 
 export default async function handler(
   req: NextApiRequest,
@@ -18,12 +19,21 @@ export default async function handler(
   return res.status(StatusCodes.METHOD_NOT_ALLOWED).end();
 }
 
+const getOrdersQuerySchema = z.object({
+  sort: z.enum(["asc", "desc"]).optional(),
+});
+
 const handleGet = async (req: NextApiRequest, res: NextApiResponse) => {
   try {
+    const { sort = "desc" } = await getOrdersQuerySchema.parseAsync(req.query);
+
     const { email } = await getCurrentUser(req, res);
     const orders = await prisma.order.findMany({
       where: {
         email,
+      },
+      orderBy: {
+        createdAt: sort,
       },
       include: {
         productOrders: {

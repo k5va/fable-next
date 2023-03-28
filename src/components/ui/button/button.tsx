@@ -7,9 +7,9 @@ const buttonStyles = cva(
     variants: {
       intent: {
         primary:
-          "text-primary bg-secondary border-secondary transition hover:-translate-y-[2px]",
+          "text-primary bg-secondary border-secondary hover:animate-scale",
         secondary:
-          "text-secondary bg-primary border-primary transition hover:-translate-y-[2px]",
+          "text-secondary bg-primary border-primary hover:animate-scale",
         disabled: "text-primary bg-disabled border-disabled",
       },
       width: {
