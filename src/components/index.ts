@@ -14,7 +14,7 @@ export * from "./socials/socials";
 export * from "./category-products/category-products";
 export * from "./collection-products/collection-products";
 export * from "./error-fallback/error-fallback";
-export * from "./images-carousel/images-carousel";
+export * from "./ui/carousel/carousel";
 export * from "./add-to-cart-form/add-to-cart-form";
 export * from "./color-picker/color-picker";
 export * from "./size-picker/size-picker";
