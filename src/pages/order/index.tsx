@@ -38,7 +38,6 @@ const Order: NextPage = () => {
         <meta name="description" content="Fable store" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      {/* TODO: Normalize? box-sizing: border-box;? */}
       <div className="grid min-h-screen grid-rows-[auto,1fr,auto]">
         <Header />
         <main>
