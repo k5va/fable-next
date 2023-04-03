@@ -1,9 +1,10 @@
 import React from "react";
-import { ImagesCarousel } from "../images-carousel/images-carousel";
-import { AddToCartForm } from "../add-to-cart-form/add-to-cart-form";
-import { ProductInfo } from "../product-info/product-info";
+import Image from "next/image";
+import { Carousel, AddToCartForm, ProductInfo } from "~/components";
 import { ProductBreadcrumbs } from "../product-breadcrumbs/product-breadcrumbs";
 import { Product } from "~/types";
+
+const PRODUCT_IMAGES_RATIO = 0.96;
 
 type ProductCardFullProps = {
   product: Product;
@@ -24,7 +25,11 @@ export function ProductCardFull({
         <ProductBreadcrumbs product={product} />
       </div>
       <div className="row-span-2 medium:row-auto">
-        <ImagesCarousel images={product.images} caption={product.name} />
+        <Carousel ratio={PRODUCT_IMAGES_RATIO}>
+          {product.images.map(({ id, src }) => (
+            <Image key={id} fill src={src} alt={product.name} />
+          ))}
+        </Carousel>
       </div>
       <AddToCartForm product={product} />
       <ProductInfo />

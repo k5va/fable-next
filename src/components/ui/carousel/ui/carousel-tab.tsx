@@ -1,25 +1,24 @@
 import classNames from "classnames";
+import { useAnimate } from "framer-motion";
 import React, { useId } from "react";
-
-type CarouselTabProps = {
-  checked: boolean;
-  onChecked: () => void;
-};
+import { CarouselTabProps } from "../types";
 
 export const CarouselTab = ({
   checked,
   onChecked,
 }: CarouselTabProps): JSX.Element => {
   const inputId = useId();
+  const [ref, animate] = useAnimate();
 
   return (
-    <div className="h-4 w-full">
+    <div ref={ref} className="h-4 w-full">
       <input
         className="absolute appearance-none"
         id={inputId}
         type="radio"
         checked={checked}
         onChange={({ target }) => {
+          void animate("label", { opacity: [1, 0.5, 1] });
           if (target.checked) {
             onChecked();
           }
