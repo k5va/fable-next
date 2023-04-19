@@ -1,5 +1,6 @@
 import React, { PropsWithChildren } from "react";
 import * as RadixTabs from "@radix-ui/react-tabs";
+import { motion } from "framer-motion";
 
 type TabsProps = PropsWithChildren<{
   defaultValue: string;
@@ -27,12 +28,14 @@ type TabsButtonProps = PropsWithChildren<{
 
 const TabsButton = ({ children, value }: TabsButtonProps): JSX.Element => {
   return (
-    <RadixTabs.Trigger
-      className="cursor-pointer text-xl hover:animate-scale data-[state=inactive]:opacity-30"
-      value={value}
-    >
-      {children}
-    </RadixTabs.Trigger>
+    <motion.div whileHover={{ scale: 1.05 }}>
+      <RadixTabs.Trigger
+        className="cursor-pointer text-xl data-[state=inactive]:opacity-30"
+        value={value}
+      >
+        {children}
+      </RadixTabs.Trigger>
+    </motion.div>
   );
 };
 
@@ -43,7 +46,11 @@ type TabsContentProps = PropsWithChildren<{
 }>;
 
 const TabsContent = ({ children, value }: TabsContentProps): JSX.Element => {
-  return <RadixTabs.Content value={value}>{children}</RadixTabs.Content>;
+  return (
+    <RadixTabs.Content value={value}>
+      <motion.div animate={{ opacity: [0, 1] }}>{children}</motion.div>
+    </RadixTabs.Content>
+  );
 };
 
 Tabs.Content = TabsContent;

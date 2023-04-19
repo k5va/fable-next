@@ -4,6 +4,7 @@ import classNames from "classnames";
 import { useTranslation } from "next-i18next";
 import { GiHamburgerMenu } from "react-icons/gi";
 import { menuRoutes } from "./catalog-menu.routes";
+import { motion } from "framer-motion";
 
 export function CatalogMenu(): JSX.Element {
   const { t } = useTranslation();
@@ -31,9 +32,13 @@ export function CatalogMenu(): JSX.Element {
         )}
       >
         {menuRoutes.map(({ link, text }, index) => (
-          <li className="hover:animate-scale" key={index}>
+          <motion.li
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 1.1 }}
+            key={index}
+          >
             <Link href={link}>{t(text)}</Link>
-          </li>
+          </motion.li>
         ))}
       </ul>
     </div>
