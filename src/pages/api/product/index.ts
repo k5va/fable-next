@@ -25,6 +25,7 @@ export default async function handler(
         include: {
           images: true,
           image: true,
+          favoriteUsers: true,
         },
       });
 

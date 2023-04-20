@@ -11,3 +11,5 @@ export * from "./use-product-orders";
 export * from "./use-submit-order";
 export * from "./use-create-order";
 export * from "./use-load-orders";
+export * from "./use-is-favorite-product";
+export * from "./use-add-to-favorites";

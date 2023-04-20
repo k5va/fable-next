@@ -1,10 +1,14 @@
 import React from "react";
 import { useTranslation } from "next-i18next";
-import { ProductCardProps } from "./types";
 import Image from "next/image";
 import Link from "next/link";
 import { motion } from "framer-motion";
-import { BiHeart } from "react-icons/bi";
+import { AddToFavoritesButton } from "~/components";
+import { Product } from "~/types";
+
+type ProductCardProps = {
+  product: Product;
+};
 
 export function ProductCard({ product }: ProductCardProps): JSX.Element {
   const { id, name, price, image } = product;
@@ -35,9 +39,7 @@ export function ProductCard({ product }: ProductCardProps): JSX.Element {
         >
           {name}
         </h5>
-        <motion.button whileHover={{ scale: 1.1 }} whileTap={{ scale: 1.2 }}>
-          <BiHeart className="text-xl small:text-xs" color="red" />
-        </motion.button>
+        <AddToFavoritesButton product={product} />
       </div>
       <p className="text-2xl small:text-sm">
         {t("main.product.price", { price })}
