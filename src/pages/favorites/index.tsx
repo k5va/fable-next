@@ -8,6 +8,7 @@ import {
   Footer,
   Header,
   FavoriteProductList,
+  Spinner,
 } from "~/components";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import { getServerSession } from "next-auth";
@@ -29,7 +30,7 @@ const Home: NextPage = () => {
         <ErrorBoundary FallbackComponent={ErrorFallback}>
           <Container>
             <h1 className="mb-3 text-center text-2xl font-medium">
-              Мои заказы
+              Мои любимые товары
             </h1>
             <FavoriteProductList />
           </Container>

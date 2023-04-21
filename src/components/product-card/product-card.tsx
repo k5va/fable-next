@@ -17,11 +17,7 @@ export function ProductCard({ product }: ProductCardProps): JSX.Element {
   return (
     <div className="flex flex-col items-center">
       <div className="mb-8 overflow-hidden rounded-md bg-gray-300 small:mb-4">
-        <motion.div
-          whileHover={{ scale: 1.05 }}
-          whileTap={{ scale: 1.1 }}
-          className="group"
-        >
+        <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 1.1 }}>
           <Link href={`/product/${id}`}>
             <Image width="427" height="427" src={image.src} alt={name} />
           </Link>

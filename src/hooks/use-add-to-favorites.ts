@@ -7,6 +7,7 @@ export const useAddToFavorites = (productId: string) => {
     mutationFn: setFavoriteProduct,
     onSuccess: () => {
       void queryClient.invalidateQueries({ queryKey: ["products", productId] });
+      void queryClient.invalidateQueries({ queryKey: ["favorites"] });
     },
   });
 
