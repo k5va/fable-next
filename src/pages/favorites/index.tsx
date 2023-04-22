@@ -8,7 +8,6 @@ import {
   Footer,
   Header,
   FavoriteProductList,
-  Spinner,
 } from "~/components";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import { getServerSession } from "next-auth";

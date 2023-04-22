@@ -1,11 +1,14 @@
 import { useQuery } from "react-query";
 import { fetchFavoriteProducts } from "~/api";
-import { LoadResult, Product } from "~/types";
+import { LoadResult, ProductList } from "~/types";
 
-export const useLoadFavoriteProducts = (): LoadResult<Product[]> => {
+export const useLoadFavoriteProducts = (
+  page: number,
+  count: number
+): LoadResult<ProductList> => {
   const { data, error, isLoading } = useQuery({
-    queryFn: fetchFavoriteProducts,
-    queryKey: ["favorites"],
+    queryFn: () => fetchFavoriteProducts({ page, count }),
+    queryKey: ["favorites", page],
   });
 
   return { data, error, isLoading };

@@ -1,6 +1,10 @@
 import axios from "axios";
-import { favoriteProductSchema, productSchema } from "~/schema";
-import { Product, FavoriteProduct } from "~/types";
+import {
+  favoriteProductSchema,
+  productListSchema,
+  productSchema,
+} from "~/schema";
+import { Product, FavoriteProduct, ProductList } from "~/types";
 import { ApiRoute, BACKEND_URL } from "./api.const";
 
 export async function fetchProducts(ids: string[] = []): Promise<Product[]> {
@@ -19,12 +23,15 @@ export async function fetchProduct(id: string): Promise<Product> {
   return productSchema.parseAsync(data);
 }
 
-export async function fetchFavoriteProducts(): Promise<Product[]> {
-  const { data } = await axios.get<Product[]>(
-    `${BACKEND_URL}/${ApiRoute.PRODUCT}/favorites`
+export async function fetchFavoriteProducts({
+  page,
+  count,
+}: Pick<ProductList, "count" | "page">): Promise<ProductList> {
+  const { data } = await axios.get<ProductList>(
+    `${BACKEND_URL}/${ApiRoute.PRODUCT}/favorites?page=${page}&count=${count}`
   );
 
-  return productSchema.array().parseAsync(data);
+  return productListSchema.parseAsync(data);
 }
 
 export async function fetchIsFavoriteProduct(
