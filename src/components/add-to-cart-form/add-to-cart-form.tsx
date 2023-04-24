@@ -1,5 +1,10 @@
 import React, { FormEventHandler, useState } from "react";
-import { Button, ColorPicker, SizePicker } from "~/components";
+import {
+  AddToFavoritesButton,
+  Button,
+  ColorPicker,
+  SizePicker,
+} from "~/components";
 import { AddToCartFormProps } from "./types";
 import { useTranslation } from "next-i18next";
 import { ProductColor, ProductSize } from "~/types";
@@ -11,6 +16,7 @@ import {
 import { AppRoute } from "~/const";
 import { useAddToCart } from "./hooks/use-add-to-cart";
 import { useRouter } from "next/router";
+import { useSession } from "next-auth/react";
 
 export function AddToCartForm({ product }: AddToCartFormProps) {
   const { id: productId, name, price } = product;
@@ -19,6 +25,7 @@ export function AddToCartForm({ product }: AddToCartFormProps) {
   const [size, setSize] = useState<ProductSize>(DEFAULT_PRODUCT_SIZE);
   const [color, setColor] = useState<ProductColor>(DEFAULT_PRODUCT_COLOR);
   const [isAddedToCart, addProductToOrder] = useAddToCart(productId);
+  const { data: session } = useSession();
 
   const handleSubmit: FormEventHandler<HTMLFormElement> = (e) => {
     e.preventDefault();
@@ -32,24 +39,25 @@ export function AddToCartForm({ product }: AddToCartFormProps) {
   };
 
   return (
-    <section
+    <div
       className="
         flex flex-col flex-nowrap 
         medium:items-center
         "
     >
-      <p
+      <div
         className="
-        mb-8 text-3xl 
-        medium:mb-1 medium:opacity-40
-        small:text-xs"
+          mb-8 flex gap-5 text-3xl
+          medium:mb-1 medium:opacity-40
+          small:text-xs"
       >
-        {name}
-      </p>
+        <p>{name}</p>
+        {session && <AddToFavoritesButton product={product} />}
+      </div>
       <p
         className="
-        mb-8 text-3xl
-        small:mb-4 small:text-base"
+          mb-8 text-3xl
+          small:mb-4 small:text-base"
       >
         {t("main.product.price", { price })}
       </p>
@@ -73,6 +81,6 @@ export function AddToCartForm({ product }: AddToCartFormProps) {
           )}
         </Button>
       </form>
-    </section>
+    </div>
   );
 }

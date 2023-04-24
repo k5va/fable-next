@@ -42,3 +42,4 @@ export * from "./ui/select/select";
 export * from "./ui/accordion/accordion";
 export * from "./add-to-favorites-button/add-to-favorites-button";
 export * from "./favorite-product-list/favorite-product-list";
+export * from "./ui/pagination/paginatipon";

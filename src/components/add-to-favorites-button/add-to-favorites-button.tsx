@@ -1,5 +1,4 @@
 import React from "react";
-import { useSession } from "next-auth/react";
 import { motion, useAnimate } from "framer-motion";
 import { BiHeart } from "react-icons/bi";
 import { Product } from "~/types";
@@ -12,7 +11,6 @@ type AddToFavoritesButtonProps = {
 export const AddToFavoritesButton = ({
   product,
 }: AddToFavoritesButtonProps): JSX.Element | null => {
-  const { data: session } = useSession();
   const { data: favoriteProduct } = useIsFavoriteProduct(product.id);
   const { addToFavorites } = useAddToFavorites(product.id);
   const [scope, animate] = useAnimate();
@@ -30,7 +28,7 @@ export const AddToFavoritesButton = ({
     animation.cancel();
   };
 
-  return session && favoriteProduct ? (
+  return favoriteProduct ? (
     <motion.button
       ref={scope}
       initial={{ opacity: 1 }}

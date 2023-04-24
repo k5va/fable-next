@@ -5,6 +5,7 @@ import Link from "next/link";
 import { motion } from "framer-motion";
 import { AddToFavoritesButton } from "~/components";
 import { Product } from "~/types";
+import { useSession } from "next-auth/react";
 
 type ProductCardProps = {
   product: Product;
@@ -12,6 +13,7 @@ type ProductCardProps = {
 
 export function ProductCard({ product }: ProductCardProps): JSX.Element {
   const { id, name, price, image } = product;
+  const { data: session } = useSession();
   const { t } = useTranslation();
 
   return (
@@ -35,7 +37,7 @@ export function ProductCard({ product }: ProductCardProps): JSX.Element {
         >
           {name}
         </h5>
-        <AddToFavoritesButton product={product} />
+        {session && <AddToFavoritesButton product={product} />}
       </div>
       <p className="text-2xl small:text-sm">
         {t("main.product.price", { price })}
