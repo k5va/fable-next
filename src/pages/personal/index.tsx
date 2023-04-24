@@ -7,7 +7,7 @@ import {
   ErrorFallback,
   Footer,
   Header,
-  FavoriteProductList,
+  OrderList,
 } from "~/components";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import { getServerSession } from "next-auth";
@@ -31,7 +31,7 @@ const Home: NextPage = () => {
             <h1 className="mb-3 text-center text-2xl font-medium">
               Мои заказы
             </h1>
-            <FavoriteProductList />
+            <OrderList />
           </Container>
         </ErrorBoundary>
       </main>
