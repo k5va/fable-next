@@ -40,3 +40,6 @@ export * from "./order-data/order-data";
 export * from "./ui/dropdown/dropdown";
 export * from "./ui/select/select";
 export * from "./ui/accordion/accordion";
+export * from "./add-to-favorites-button/add-to-favorites-button";
+export * from "./favorite-product-list/favorite-product-list";
+export * from "./ui/pagination/paginatipon";

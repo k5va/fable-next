@@ -12,3 +12,5 @@ export * from "./order.type";
 export * from "./create-order.type";
 export * from "./create-product-order.type";
 export * from "./sort.type";
+export * from "./favorite-product.type";
+export * from "./product-list.type";

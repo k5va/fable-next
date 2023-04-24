@@ -3,4 +3,5 @@ export const AppRoute = {
   PRODUCT: "/product/:id",
   ORDER: "/order",
   PERSONAL: "/personal",
+  FAVORITES: "/favorites",
 } as const;

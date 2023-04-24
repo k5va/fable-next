@@ -31,7 +31,7 @@ export function PersonalMenu(): JSX.Element | null {
           <Link href={AppRoute.PERSONAL}>Orders</Link>
         </Dropdown.MenuItem>
         <Dropdown.MenuItem>
-          <Link href={AppRoute.PERSONAL}>Favorites</Link>
+          <Link href={AppRoute.FAVORITES}>Favorites</Link>
         </Dropdown.MenuItem>
       </Dropdown.Menu>
     </Dropdown>

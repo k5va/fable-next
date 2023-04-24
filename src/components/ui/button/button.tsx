@@ -1,15 +1,14 @@
-import React, { ButtonHTMLAttributes, PropsWithChildren } from "react";
+import React, { PropsWithChildren } from "react";
 import { cva, VariantProps } from "class-variance-authority";
+import { motion } from "framer-motion";
 
 const buttonStyles = cva(
   "text-xl py-2 px-10 cursor-pointer border border-solid",
   {
     variants: {
       intent: {
-        primary:
-          "text-primary bg-secondary border-secondary hover:animate-scale",
-        secondary:
-          "text-secondary bg-primary border-primary hover:animate-scale",
+        primary: "text-primary bg-secondary border-secondary",
+        secondary: "text-secondary bg-primary border-primary",
         disabled: "text-primary bg-disabled border-disabled",
       },
       width: {
@@ -30,24 +29,22 @@ const buttonStyles = cva(
   }
 );
 
-type ButtonProps = PropsWithChildren<
-  ButtonHTMLAttributes<HTMLButtonElement> & VariantProps<typeof buttonStyles>
->;
+type ButtonProps = PropsWithChildren<VariantProps<typeof buttonStyles>>;
 
 export const Button = ({
   children,
   intent,
   width,
   shape,
-  ...props
 }: ButtonProps): JSX.Element => {
   return (
-    <button
+    <motion.button
+      whileHover={intent !== "disabled" ? { scale: 1.01 } : undefined}
+      whileTap={intent !== "disabled" ? { opacity: [1, 0.2, 1] } : undefined}
       className={buttonStyles({ intent, width, shape })}
       disabled={intent === "disabled"}
-      {...props}
     >
       {children}
-    </button>
+    </motion.button>
   );
 };
